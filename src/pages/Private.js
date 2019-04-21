@@ -57,7 +57,10 @@ componentWillUnmounted(){
       case 'isLoaded':
       return <div>
       <SearchBar onTermSubmit={this.onTermSubmit}/>
-      <RecipeList recipes ={this.state.recipes} />
+      <RecipeList recipes = {this.state.recipes}/>
+        
+      
+      
       </div>
       
     }

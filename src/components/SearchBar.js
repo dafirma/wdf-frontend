@@ -34,7 +34,7 @@ class SearchBar extends Component {
             placeholder='banana, yogurt, etc'
           />
         </form>
-        <RecipeList recipes = {this.state.recipes}/>
+        
       </div>
     );
   }
