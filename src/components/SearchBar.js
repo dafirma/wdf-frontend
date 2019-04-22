@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import RecipeList from '../pages/RecipeList';
-
+//import RecipeList from '../pages/RecipeList';
+//import axios from 'axios';
 class SearchBar extends Component {
   constructor(props){
     super(props);
     this.state = { term: '',
-    recipes: this.props,
    };
 
   // console.log(this.recipes);
@@ -19,12 +18,23 @@ class SearchBar extends Component {
 
     this.props.onTermSubmit(this.state.term);
   };
+ /*  onTermSubmit = async term =>{
+    const item = term;
+    const edaId = 'd5c3f152';
+    const edaKey = '71a22a30005b3166674bfb754a7d10ff';
+    const response = await axios.get (`https://api.edamam.com/search?q=${item}&app_id=${edaId}&app_key=${edaKey}`)
+    this.setState({
+      recipes:response.data.hits
+    })
+  
+   } */
 
   render() {
-    const {recipes} = this.state;
-    console.log(recipes);
+    //const {recipes} = this.state;
+    //console.log(recipes);
     return (
       <div className='ui search-bar'>
+      <h2>Search</h2>
         <form className='ui form' onSubmit={this.onFormSubmit}>
           <input
             onChange={this.onInputChange}
@@ -33,8 +43,8 @@ class SearchBar extends Component {
             className='centerInput'
             placeholder='banana, yogurt, etc'
           />
+          <button type='submit'> Search</button>
         </form>
-        
       </div>
     );
   }

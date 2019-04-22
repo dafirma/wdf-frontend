@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 //import axios from 'axios';
 import { withAuth } from '../lib/AuthProvider';
+//import { Link } from 'react-router-dom';
 
 class RecipeList extends Component {
   constructor(props){
     super(props);
     this.state = { 
         recipes:[],
-        status:'isLoading',
-        recipeNew: this.props
+        status:'',
+        recipeNew:[]
     }
 
   }
@@ -16,7 +17,7 @@ class RecipeList extends Component {
 
 
   render(){
-    const { recipes } = this.props; 
+    const { recipes, status } = this.props; 
     let sizeObj = Object.keys(recipes).length;
     console.log(sizeObj);
     if(sizeObj === 3 ){
@@ -25,26 +26,36 @@ class RecipeList extends Component {
           <h1>Based on your preference</h1>
           {recipes.map((recipe, index) =>
           <div key = {index}>
+          <button onClick={()=>this.setState({recipeNew:recipe})}>
+          <img src= {recipe.recipe.image} alt={recipe.recipe.label} />
             <p>{recipe.recipe.label}</p>
-            </div>)}
-          
+            <p>Calories: {parseInt(recipe.recipe.calories)}</p>
+            </button>
+            </div>
+            )}
           </div>
       )
 
     }else{
-      return(
+      // eslint-disable-next-line default-case
+      switch(status){
+        case 'isLoading':
+        return 'Loading...'
+        case 'isLoaded':
+          return(
         <div>
-          <h1>Results:</h1>
           {recipes.map((recipe, index) =>
           <div key = {index}>
+          <img src= {recipe.recipe.image} alt={recipe.recipe.label} />
             <p>{recipe.recipe.label}</p>
+            <p>Calories: {parseInt(recipe.recipe.calories)}</p>
             </div>)}
           
           </div>
       )
 
     }
-      
+  } 
 
   }
 }

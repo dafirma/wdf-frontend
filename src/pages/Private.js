@@ -1,54 +1,58 @@
 import React, { Component } from "react";
+//import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import { withAuth } from "../lib/AuthProvider";
-import SearchBar from '../components/SearchBar';
-//import Dashboard from './dashboard';
-import RecipeList from './RecipeList';
+//import SearchBar from '../components/SearchBar';
+//import Storage from './Storage';
+//import Header from '../components/Header';
+//import { Link } from 'react-router-dom';
+//import RecipeList from './RecipeList';
+import Main from './Main'
+//import RecipeDetails from "./RecipeDetails";
+//import RecipeMain from "./RecipeMain";
+import Dashboard from './Dashboard';
 class Private extends Component {
-  _isMounted = false;
-  constructor(){
-    super();
-    this.state = { 
-      recipes: [],
+    state ={
+      recipes:[],
       status:'isLoading',
-      preference:'vegatarian'
-  }
+    }
+    async componentDidMount(){
+      this._isMounted = true;
+      const edaId = 'd5c3f152';
+      const edaKey = '71a22a30005b3166674bfb754a7d10ff';
+      const response = await axios.get(`https://api.edamam.com/search?q=potato&health=vegetarian&app_id=${edaId}&app_key=${edaKey}&from=0&to=3&calories=591-722`)
+      if(this._isMounted){
+        this.setState({
+          recipes:response.data.hits,
+          status: 'isLoaded',
+        })
+      }
+    }
 
-  }
+  render(){
+    const {recipes, status} =this.state;
+    return(
+      <div>
+        <Main />
+        <Dashboard recipes={this.state.recipes} status={this.state.status}/>
 
-async componentDidMount(){
-  this._isMounted = true;
-  const edaId = 'd5c3f152';
-  const edaKey = '71a22a30005b3166674bfb754a7d10ff';
-  const response = await axios.get(`https://api.edamam.com/search?q=potato&health=vegetarian&app_id=${edaId}&app_key=${edaKey}&from=0&to=3&calories=591-722`)
-  if(this._isMounted){
-    this.setState({
-      recipes:response.data.hits,
-      status: 'isLoaded',
-    })
+        }
+        </div>
+    )
   }
 }
 
-  
-componentWillUnmounted(){
-  this._isMounted = false;
-}
- onTermSubmit = async term =>{
-  const item = term;
-  const edaId = 'd5c3f152';
-  const edaKey = '71a22a30005b3166674bfb754a7d10ff';
-  const response = await axios.get (`https://api.edamam.com/search?q=${item}&app_id=${edaId}&app_key=${edaKey}`)
-  this.setState({
-    recipes:response.data.hits
-  })
-
- }
+export default withAuth(Private);
+ 
 
 
-
-  render() {
-    const { status, recipes} = this.state;
-    console.log(recipes);
+/*
+<Switch>
+<Route exact path='/private' component={Private}/>
+<Route path='search' component={SearchBar}/>
+<Route path='storage' component={Storage}/>
+</Switch>
+console.log(recipesMain);
     console.log(status);
     // eslint-disable-next-line default-case
     switch(status){
@@ -58,22 +62,17 @@ componentWillUnmounted(){
       return <div>
       <SearchBar onTermSubmit={this.onTermSubmit}/>
       <RecipeList recipes = {this.state.recipes}/>
-        
-      
-      
-      </div>
-      
-    }
-
-    
-  }
-}
-
-export default withAuth(Private);
- 
+      <Switch>
+        <Route path='/recipelist' component={RecipeList} recipes={this.state.recipes} />
+      </Switch>
 
 
-/*
+
+
+----------------------------------
+<RecipeList recipes = {this.state.recipes}/>
+
+--------------------------------------------
 render() {
     const { status, cards} = this.state;
     console.log(cards);
