@@ -10,6 +10,16 @@ class Navbar extends Component {
           <>
             <p>username: {user.username}</p>
             <button onClick={logout}>Logout</button>
+            <div>
+          <ul>
+            {/* <li><NavLink to='/'>Home</NavLink></li> */}
+            <li><Link to='/storage'>Storage</Link></li>
+            <li><Link to='/search'>Search</Link></li>
+            <li><Link to='/favorites'>Favorites</Link></li>
+            <li><Link to='/test'>Test</Link></li>
+          </ul>
+          </div>
+            
           </>
         ) : (
           <>

@@ -7,7 +7,7 @@ import { withAuth } from "../lib/AuthProvider";
 //import Header from '../components/Header';
 //import { Link } from 'react-router-dom';
 //import RecipeList from './RecipeList';
-import Main from './Main'
+//import Main from './Main'
 //import RecipeDetails from "./RecipeDetails";
 //import RecipeMain from "./RecipeMain";
 import Dashboard from './Dashboard';
@@ -30,10 +30,10 @@ class Private extends Component {
     }
 
   render(){
-    const {recipes, status} =this.state;
+    //const {recipes, status} =this.state;
     return(
       <div>
-        <Main />
+        {/* <Main /> */}
         <Dashboard recipes={this.state.recipes} status={this.state.status}/>
 
         }
@@ -44,61 +44,3 @@ class Private extends Component {
 
 export default withAuth(Private);
  
-
-
-/*
-<Switch>
-<Route exact path='/private' component={Private}/>
-<Route path='search' component={SearchBar}/>
-<Route path='storage' component={Storage}/>
-</Switch>
-console.log(recipesMain);
-    console.log(status);
-    // eslint-disable-next-line default-case
-    switch(status){
-      case 'isLoading':
-      return 'Loading...'
-      case 'isLoaded':
-      return <div>
-      <SearchBar onTermSubmit={this.onTermSubmit}/>
-      <RecipeList recipes = {this.state.recipes}/>
-      <Switch>
-        <Route path='/recipelist' component={RecipeList} recipes={this.state.recipes} />
-      </Switch>
-
-
-
-
-----------------------------------
-<RecipeList recipes = {this.state.recipes}/>
-
---------------------------------------------
-render() {
-    const { status, cards} = this.state;
-    console.log(cards);
-    console.log(status);
-    // eslint-disable-next-line default-case
-    switch(status){
-      case 'isLoading':
-      return 'Loading...'
-      case 'isLoaded':
-      return <div>
-      <SearchBar />
-      <h2>Based on preference</h2>
-      {cards.map((card, index)=>
-      <div key={index}>
-      <img src = {card.recipe.image} alt={card.recipe.title}/>
-        <p>{card.recipe.label}</p>
-        <p>{parseInt(card.recipe.calories)}</p>
-        {card.recipe.healthLabels.map((cardHealth, indexHealth)=>
-          <p key={indexHealth}>{cardHealth}</p>)}
-        </div>)}
-        </div>
-      
-    }
-
-    
-  }
-
-
-*/

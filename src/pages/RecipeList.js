@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 //import axios from 'axios';
 import { withAuth } from '../lib/AuthProvider';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class RecipeList extends Component {
   constructor(props){
     super(props);
     this.state = { 
         recipes:[],
-        status:'',
+        status:'isLoading',
         recipeNew:[]
     }
 
@@ -25,12 +25,14 @@ class RecipeList extends Component {
         <div>
           <h1>Based on your preference</h1>
           {recipes.map((recipe, index) =>
-          <div key = {index}>
+          <div key = {recipe.recipe.uri}>
           <button onClick={()=>this.setState({recipeNew:recipe})}>
           <img src= {recipe.recipe.image} alt={recipe.recipe.label} />
             <p>{recipe.recipe.label}</p>
             <p>Calories: {parseInt(recipe.recipe.calories)}</p>
-            </button>
+            </button><Link to={`/recipe/${index}`}>
+            {recipe.recipe.label}
+            </Link>
             </div>
             )}
           </div>
@@ -45,10 +47,12 @@ class RecipeList extends Component {
           return(
         <div>
           {recipes.map((recipe, index) =>
-          <div key = {index}>
+          <div key = {recipe.recipe.uri}>
+          <Link to={{pathname:`/recipe/${index}` , state:{recipe}}}>
           <img src= {recipe.recipe.image} alt={recipe.recipe.label} />
             <p>{recipe.recipe.label}</p>
             <p>Calories: {parseInt(recipe.recipe.calories)}</p>
+            </Link>
             </div>)}
           
           </div>
