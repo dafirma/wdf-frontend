@@ -1,8 +1,7 @@
 # Project Name
  WHAT DA FOOD
 ## Description
- WHAT DA FOOD is an app that help you to track 
-Describe your project in one/two lines.
+ WHAT DA FOOD is an app that help you to find recipes based on your food storage
 
 ## User Stories
 
@@ -46,7 +45,7 @@ Homepage:
 - Auth Service
   - auth.login(user)
   - auth.signup(user)
-  - auth.logout()npm install --save react-router-npm install --save react-router-domdom
+  - auth.logout()
   - auth.me()
   - auth.getUser() // synchronous
   
@@ -85,12 +84,12 @@ SUB SCHEMA
 
 Recipe model
 
-```
 title: String
 ingredients: String
 description: String
 duration: Number
 
+```
 
 ## API Endpoints (backend routes)
 
@@ -104,22 +103,29 @@ duration: Number
 |POST|api/auth/login|Register user to app and set user to session (Body: username, password)|
 |POST|api/auth/logout|Log out user from app and remove session|
 
+### food
+
+|Method|Route|Functionality|
+|---|---|---|
+|GET|food/storage|show list of all foods|
+|POST|food/storage|create a new food|
+|GET|food/storage/:id|show a specific food|
+|PUT|food/storage/:id|update a specific food|
+|DELETE|food/storage/:id|delete a specific food|
+
+### favorite
+
+|Method|Route|Functionality|
+|---|---|---|
+|POST|api/favorite|add a favorite recipe|
+|GET|api/favorite/:id|show a specific favorite recipe|
+|DELETE|api/favorite| delete a specific recipe|
+
+### main
+|Method|Route|Functionality|
+|---|---|---|
 |GET|api/|dashboard|show the a list of recipes based on preferences|
-|GET|api/recipe/search|search for recipe|
-|GET|api/recipe/search/list|show a list of recipes|
-|GET|api/recipe/:id|show details of recipe|
-|GET|api/storage|show list of products|
 
-
-
-|URL|HTTP verb|Request body|Action|
-|/api/recipes|GET|(empty)|returns all the recipes|
-|/api/recipes|POST|JSON|add a new recipe to favorite|
-|/api/favorite||||
-|/api/favorite/:id|PUT|JSON|edits a favorite|
-|/api/favorite/:id|DELETE|(empty)|deletes the favorite|
-|||||
-  
 
 ## Links
 
@@ -131,9 +137,9 @@ duration: Number
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/Ironhack-PartTime-BCN/boilerplate-frontend-module-3)
+[Client repository Link](https://github.com/dafirma/wdf-frontend)
 
-[Server repository Link](https://github.com/Ironhack-PartTime-BCN/boilerplate-backend-module-3)
+[Server repository Link](https://github.com/dafirma/wdf-backend)
 
 [Deploy Link Backend](http://heroku.com)
 

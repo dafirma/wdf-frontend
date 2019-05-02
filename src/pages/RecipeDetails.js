@@ -25,3 +25,9 @@ const RecipeDetails =(props) =>{
 
 
 export default withAuth(RecipeDetails);
+
+
+
+
+
+

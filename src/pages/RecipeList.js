@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import axios from 'axios';
 import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
-
+import {FavButton} from '../components/FavButton'
 class RecipeList extends Component {
   constructor(props){
     super(props);
@@ -25,6 +25,7 @@ class RecipeList extends Component {
         <div>
           <h1>Based on your preference</h1>
           {recipes.map((recipe, index) =>
+          <FavButton>
           <div key = {recipe.recipe.uri}>
           <button onClick={()=>this.setState({recipeNew:recipe})}>
           <img src= {recipe.recipe.image} alt={recipe.recipe.label} />
@@ -34,6 +35,7 @@ class RecipeList extends Component {
             {recipe.recipe.label}
             </Link>
             </div>
+            </FavButton>
             )}
           </div>
       )

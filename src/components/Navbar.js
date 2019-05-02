@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+//import  { useState } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+import { FoodConsumer } from '../lib/FoodContext';
 class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
@@ -9,16 +11,19 @@ class Navbar extends Component {
         {isLoggedin ? (
           <>
             <p>username: {user.username}</p>
+            <p>favorites:</p>
             <button onClick={logout}>Logout</button>
-            <div>
-          <ul>
-            {/* <li><NavLink to='/'>Home</NavLink></li> */}
-            <li><Link to='/storage'>Storage</Link></li>
-            <li><Link to='/search'>Search</Link></li>
-            <li><Link to='/favorites'>Favorites</Link></li>
-            <li><Link to='/test'>Test</Link></li>
-          </ul>
-          </div>
+
+            <ul>
+              <li><Link to='/private'>Home</Link></li>
+              <li><Link to='/storage'>Storage</Link></li>
+              <li><Link to='/search'>Search</Link></li>
+              <li><Link to='/favorites'>Favorites </Link></li>
+              <li><Link to='/test'>Test</Link></li>
+
+            </ul> 
+
+           
             
           </>
         ) : (
@@ -33,3 +38,20 @@ class Navbar extends Component {
 }
 
 export default withAuth(Navbar);
+
+
+// eslint-disable-next-line no-lone-blocks
+{/* <div>
+<ul>
+  <FoodConsumer>
+  <li><Link to='/private'>Home</Link></li>
+  <li><Link to='/storage'>Storage</Link></li>
+  <li><Link to='/search'>Search</Link></li>
+  {({favorites}) =>
+  <li><Link to='/favorites'>Favorites {favorites}</Link></li>}
+  <li><Link to='/test'>Test</Link></li>
+  </FoodConsumer>
+</div>
+
+</ul> 
+*/}

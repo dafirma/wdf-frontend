@@ -17,6 +17,7 @@ export const withAuth = Comp => {
                 user={authStore.user}
                 logout={authStore.logout}
                 isLoggedin={authStore.isLoggedin}
+                favoriteId={authStore.favoriteId}
                 {...this.props}
               />
             );
@@ -31,8 +32,10 @@ class AuthProvider extends Component {
   state = {
     isLoggedin: false,
     user: null,
-    isLoading: true
+    isLoading: true,
+    favoriteId:[],
   };
+
 
   componentDidMount() {
     auth
@@ -41,7 +44,8 @@ class AuthProvider extends Component {
         this.setState({
           isLoggedin: true,
           user,
-          isLoading: false
+          isLoading: false,
+  
         });
       })
       .catch(() => {
@@ -54,9 +58,9 @@ class AuthProvider extends Component {
   }
 
   signup = user => {
-    const { username, password } = user;
+    const { username, password, preference } = user;
     auth
-      .signup({ username, password })
+      .signup({ username, password, preference })
       .then(user => {
         this.setState({
           isLoggedin: true,
@@ -94,8 +98,19 @@ class AuthProvider extends Component {
       })
       .catch(() => {});
   };
+
+  test = test =>{
+    const a = test;
+    this.setState({
+      favoriteId: a
+    })
+  }
+ 
+
   render() {
     const { isLoading, isLoggedin, user } = this.state;
+    console.log(this.props)
+    console.log(user);
     return isLoading ? (
       <div>Loading</div>
     ) : (
@@ -105,7 +120,8 @@ class AuthProvider extends Component {
           user,
           login: this.login,
           logout: this.logout,
-          signup: this.signup
+          signup: this.signup,
+          favoriteId:this.test
         }}
       >
         {this.props.children}
