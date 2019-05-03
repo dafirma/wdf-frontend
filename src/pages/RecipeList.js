@@ -2,19 +2,44 @@ import React, { Component } from 'react';
 //import axios from 'axios';
 import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
-import {FavButton} from '../components/FavButton'
+import axios from 'axios';
 class RecipeList extends Component {
   constructor(props){
     super(props);
     this.state = { 
         recipes:[],
         status:'isLoading',
-        recipeNew:[]
+        favoriteId:this.props.user.favorites
     }
+    this.server = axios.create({
+      baseURL:'http://localhost:5000',
+      withCredentials: true
+    });
 
   }
+  
+  clickHandler(recipe){
+    let newItem = recipe;
+    let favCopy = this.state.favoriteId;
+    favCopy.push(newItem);
+    console.log(newItem)
+    const favoriteId = favCopy;
+    this.server.put('/food/favorite',{favoriteId})
+    .then(response =>{
+      console.log(response.data)
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  }
 
-
+  handleFormSubmit = event =>{
+    event.preventDefault();
+    const { favoriteId } = this.state;
+    console.log(favoriteId);
+    
+  }
+  
 
   render(){
     const { recipes, status } = this.props; 
@@ -25,17 +50,16 @@ class RecipeList extends Component {
         <div>
           <h1>Based on your preference</h1>
           {recipes.map((recipe, index) =>
-          <FavButton>
           <div key = {recipe.recipe.uri}>
-          <button onClick={()=>this.setState({recipeNew:recipe})}>
+          {/* <button onClick={()=>this.setState({recipeNew:recipe})}> */}
           <img src= {recipe.recipe.image} alt={recipe.recipe.label} />
             <p>{recipe.recipe.label}</p>
             <p>Calories: {parseInt(recipe.recipe.calories)}</p>
-            </button><Link to={`/recipe/${index}`}>
+            {/* </button> */}<Link to={`/recipe/${index}`}>
             {recipe.recipe.label}
             </Link>
             </div>
-            </FavButton>
+          
             )}
           </div>
       )
@@ -50,11 +74,14 @@ class RecipeList extends Component {
         <div>
           {recipes.map((recipe, index) =>
           <div key = {recipe.recipe.uri}>
+          <form onSubmit ={this.handleFormSubmit}>
+          <button onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
           <Link to={{pathname:`/recipe/${index}` , state:{recipe}}}>
           <img src= {recipe.recipe.image} alt={recipe.recipe.label} />
             <p>{recipe.recipe.label}</p>
             <p>Calories: {parseInt(recipe.recipe.calories)}</p>
             </Link>
+            </form>
             </div>)}
           
           </div>
