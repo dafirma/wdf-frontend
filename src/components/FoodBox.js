@@ -13,6 +13,7 @@ class FoodBox extends Component {
     this.setState({
       quantity:value
     })
+    console.log(this.state)
   }
   clickHandler(event){
     this.props.addMenu({
@@ -27,14 +28,14 @@ class FoodBox extends Component {
       <article className="media">
       <div className="media-left new-media-left">
       <figure className="image is-64x64">
-        <img src={this.props.image} alt =''/>
+        <img src={this.props.image} alt ='' width='30%'/>
       </figure>
     </div>
         <div className="media-content">
           <div className="content">
             <p>
-              <strong>{this.props.name}</strong>
-              <small>{this.props.quantity}</small>
+              <strong>{this.props.name}</strong>: 
+              <small>{this.props.quantity} Un</small>
             </p>
           </div>
         </div>

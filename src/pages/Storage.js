@@ -24,11 +24,42 @@ class Storage extends Component {
   }
 
   deleteFood = foodIndex => {
+    const foodsCopy = [...this.state.foods]
     const menuCopy = [...this.state.menu]
-
+    console.log(foodIndex)
+     foodsCopy.splice(foodIndex, 1)
      menuCopy.splice(foodIndex, 1)
     this.setState({
+        foods: foodsCopy,
         menu: menuCopy
+    })
+  }
+
+  /* addMenu = plusFood =>{
+    console.log(plusFood.quantity)
+    const foodsCopy = [...this.state.foods]
+    console.log(foodsCopy.quantity)
+  } */
+
+  addMenu = food =>{
+    console.log(food);
+    let menuCopy = [...this.state.menu];
+    let exists = false;
+    menuCopy.forEach(elem =>{
+      if(elem.name === food.name){
+
+        let temp = parseInt(elem.quantity) + parseInt(food.quantity);
+        console.log(temp)
+        elem.quantity = temp
+       // elem.quantity += food.quantity;
+        exists = true;
+      }
+    })
+    if(!exists){
+      menuCopy.push(food)
+    }
+    this.setState({
+      menu: menuCopy
     })
   }
   
@@ -36,6 +67,7 @@ class Storage extends Component {
 
   render(){
     let foodList = [...this.state.foods];
+    console.log(foodList)
     return(
       <div>
         <h2>STORAGE</h2>
@@ -44,10 +76,14 @@ class Storage extends Component {
           <div className="food-list">
             {foodList.map ((food, index) => 
             { return <FoodBox  key= {index} {...food} addMenu= {this.addMenu}/>})}
+              <div>
+              Edit Storage:
             <ul>
            {this.state.menu.map((food, index) => {
              return <Item key={index} {...food} deleteFood={this.deleteFood}/>})}
           </ul>
+
+              </div>
           </div>
         </div>
         </div>
