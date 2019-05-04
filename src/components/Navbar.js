@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import  { useState } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
-import { FoodConsumer } from '../lib/FoodContext';
+//import { FoodConsumer } from '../lib/FoodContext';
 class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;

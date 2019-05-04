@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 //import {FavButton} from '../components/FavButton'
 import axios from 'axios'
 
-import { FoodConsumer } from '../lib/FoodContext';
+//import { FoodConsumer } from '../lib/FoodContext';
 
 class Dashboard extends Component{
   constructor(props){
@@ -27,9 +27,11 @@ class Dashboard extends Component{
   
   clickHandler(recipe){
     let newItem = recipe;
-    let favCopy = this.state.favoriteId;
+    console.log('before:', this.props.user.favorites)
+    let favCopy = [...this.state.favoriteId];
     console.log(recipe);
     favCopy.push(newItem);
+    console.log(favCopy)
     const favoriteId = favCopy;
     console.log(favoriteId)
     /* this.setState({
@@ -54,11 +56,6 @@ class Dashboard extends Component{
  
   render () {
     const { recipes, status} = this.props;
-    //const { favoriteId } =this.state;
-  
-   // console.log(favoriteId);
-    //const theme = this.context;
-   // console.log(recipes);
     switch(status){
       case 'isLoading':
       return 'Loading...'
@@ -69,8 +66,9 @@ class Dashboard extends Component{
         <h2>Based on your preferences</h2>
         {/* <FoodConsumer> */}    
           {recipes.map((recipe,index)=>
-          <div key={index}>
+          <div key={recipe.recipe.uri}>
           <form onSubmit ={this.handleFormSubmit}>
+          {/* <button onClick ={() => this.clickWord(teste)}>word</button> */}
           <button onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
               <Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}}>
           <img src = {recipe.recipe.image} alt={recipe.recipe.label}/>

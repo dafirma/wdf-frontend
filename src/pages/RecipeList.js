@@ -9,7 +9,7 @@ class RecipeList extends Component {
     this.state = { 
         recipes:[],
         status:'isLoading',
-        favoriteId:this.props.user.favorites
+        favoriteId:[]
     }
     this.server = axios.create({
       baseURL:'http://localhost:5000',
@@ -18,15 +18,17 @@ class RecipeList extends Component {
 
   }
   
-  clickHandler(recipe){
+  clickHandler(recipe, index){
     let newItem = recipe;
-    let favCopy = this.state.favoriteId;
+    let a = index;
+    console.log(a);
+    let favCopy = [...this.state.favoriteId];
     favCopy.push(newItem);
-    console.log(newItem)
+    console.log(favCopy)
     const favoriteId = favCopy;
     this.server.put('/food/favorite',{favoriteId})
     .then(response =>{
-      console.log(response.data)
+      console.log(response)
     })
     .catch(error =>{
       console.log(error)
@@ -45,6 +47,7 @@ class RecipeList extends Component {
     const { recipes, status } = this.props; 
     let sizeObj = Object.keys(recipes).length;
     console.log(sizeObj);
+    console.log(recipes);
     if(sizeObj === 3 ){
       return(
         <div>
@@ -74,14 +77,14 @@ class RecipeList extends Component {
         <div>
           {recipes.map((recipe, index) =>
           <div key = {recipe.recipe.uri}>
-          <form onSubmit ={this.handleFormSubmit}>
-          <button onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
+          {/* <form onSubmit ={this.handleFormSubmit}> */}
+          <button onClick={()=> this.clickHandler(recipe.recipe, index)}>favorite</button>
           <Link to={{pathname:`/recipe/${index}` , state:{recipe}}}>
           <img src= {recipe.recipe.image} alt={recipe.recipe.label} />
             <p>{recipe.recipe.label}</p>
             <p>Calories: {parseInt(recipe.recipe.calories)}</p>
             </Link>
-            </form>
+            {/* </form> */}
             </div>)}
           
           </div>

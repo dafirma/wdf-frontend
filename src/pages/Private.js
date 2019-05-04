@@ -4,7 +4,7 @@ import axios from 'axios';
 import { withAuth } from "../lib/AuthProvider";
 ////import SearchPage from './SearchPage';
 //import Storage from './Storage';
-import { Route, Switch} from 'react-router-dom';
+import {Switch} from 'react-router-dom';
 //import RecipeDetails from "./RecipeDetails";
 import Dashboard from './Dashboard';
 //import PrivateRoute from '../components/PrivateRoute';
@@ -32,7 +32,7 @@ class Private extends Component {
       const edaId = 'd5c3f152';
       const edaKey = '71a22a30005b3166674bfb754a7d10ff';
       const {ingPreference} =this.state;
-      const {favorites} =this.state
+      //const {favorites} =this.state
       console.log(edaId);
       console.log(ingPreference);
       const response = await axios.get(`https://api.edamam.com/search?q=${ingPreference}&app_id=${edaId}&app_key=${edaKey}&from=0&to=10`)
@@ -48,7 +48,7 @@ class Private extends Component {
     
 
    getData = (val) => { 
-     let favCopy = this.state.favoriteId;
+     //let favCopy = this.state.favoriteId;
      const {favoriteId} = val
     // console.log(favoriteId)
      this.setState({

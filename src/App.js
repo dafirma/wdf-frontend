@@ -32,8 +32,7 @@ class App extends Component {
 
  getDataForPrivateFavorites = (val) =>{
     const {favoriteId} = val;
-    console.log(favoriteId)
-
+    this.setState({favoriteId})
   }
   render() {
     return (
@@ -49,7 +48,7 @@ class App extends Component {
             {/* <PrivateRoute path exact ='/'component={RecipeDetails}/> */}
             <PrivateRoute path ='/storage' component={Storage}/>
             <PrivateRoute path  ='/search' component={SearchPage}/>
-            <PrivateRoute path  ='/favorites' component={Favorites} favoriteId ={this.state.favoriteId}/>
+            <PrivateRoute path  ='/favorites' component={Favorites} manu={{manu: 'manu'}} favoriteId={this.state.favoriteId} getData={()=>this.getDataForPrivateFavorites}/>
             <PrivateRoute path ='/recipe/:id' component={RecipeDetails}/>
             <PrivateRoute path = '/test' component={Test} />
             <PrivateRoute path = '/test/:id' component={TestDetails} />

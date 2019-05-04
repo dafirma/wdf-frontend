@@ -18,6 +18,7 @@ export const withAuth = Comp => {
                 logout={authStore.logout}
                 isLoggedin={authStore.isLoggedin}
                 favoriteId={authStore.favoriteId}
+                getData={authStore.update}
                 {...this.props}
               />
             );
@@ -41,6 +42,28 @@ class AuthProvider extends Component {
     auth
       .me()
       .then(user => {
+        this.setState({
+          isLoggedin: true,
+          user,
+          isLoading: false,
+  
+        });
+      })
+      .catch(() => {
+        this.setState({
+          isLoggedin: false,
+          user: null,
+          isLoading: false
+        });
+      });
+  }
+
+  update = () => {
+    console.log('estoy actualizando!!')
+        auth
+      .me()
+      .then(user => {
+        console.log(user)
         this.setState({
           isLoggedin: true,
           user,
@@ -109,8 +132,8 @@ class AuthProvider extends Component {
 
   render() {
     const { isLoading, isLoggedin, user } = this.state;
-    console.log(this.props)
-    console.log(user);
+   // console.log(this.props)
+    //console.log(user);
     return isLoading ? (
       <div>Loading</div>
     ) : (
@@ -121,7 +144,8 @@ class AuthProvider extends Component {
           login: this.login,
           logout: this.logout,
           signup: this.signup,
-          favoriteId:this.test
+          favoriteId:this.test,
+          update: this.update
         }}
       >
         {this.props.children}
