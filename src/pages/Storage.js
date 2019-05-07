@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import { withAuth } from '../lib/AuthProvider';
 import FoodBox from '../components/FoodBox';
 import AddFood from '../components/AddFood';
-import Item from '../components/Item'
+import Item from '../components/Item';
+import '../stylesheets/Storage.scss';
+import axios from 'axios';
 // import from db food storage ???
 
 class Storage extends Component {
@@ -12,8 +14,15 @@ class Storage extends Component {
       foods: [],
       menu: []
     }
+    this.server = axios.create({
+      baseURL:'http://localhost:5000',
+      withCredentials: true
+    });
   }
 
+  componentDidMount(){
+    this.setStorage()
+  }
   addFood = theFood => {
     const foodsCopy = [...this.state.foods]
     foodsCopy.push(theFood)
@@ -23,10 +32,12 @@ class Storage extends Component {
     })
   }
 
-  deleteFood = foodIndex => {
+  deleteFood = (foodIndex,foodName) => {
     const foodsCopy = [...this.state.foods]
     const menuCopy = [...this.state.menu]
     console.log(foodIndex)
+    console.log(foodName)
+    this.server.post('/food/storage',{foodName})
      foodsCopy.splice(foodIndex, 1)
      menuCopy.splice(foodIndex, 1)
     this.setState({
@@ -61,23 +72,47 @@ class Storage extends Component {
     this.setState({
       menu: menuCopy
     })
+    const menu = menuCopy;
+    this.server.put('/food/storage', {menu})
+    .then(response =>{
+      console.log(response.data)
+    })
+    .catch(error =>{
+      console.log(error)
+    })
   }
-  
+  setStorage(){
+    const res = this.server.get('/food/storage')
+    .then(result =>{
+      console.log(result.data.storage)
+       this.setState({
+         menu:result.data.storage
+       }) 
+     })
+  }
 
 
   render(){
     let foodList = [...this.state.foods];
+    let newMenu = [...this.state.menu]
+    //let storageServer;
+    console.log(newMenu)
     console.log(foodList)
+    console.log(this.props.user)
     return(
-      <div>
+      <div className='container-storage'>
         <h2>STORAGE</h2>
         <AddFood addFood={this.addFood}/>
         <div className="container-food">
           <div className="food-list">
+          <hr/>
+          <div>
+          {}
+          </div>
+          <hr/>
             {foodList.map ((food, index) => 
             { return <FoodBox  key= {index} {...food} addMenu= {this.addMenu}/>})}
-              <div>
-              Edit Storage:
+              <div className='container-edit'>
             <ul>
            {this.state.menu.map((food, index) => {
              return <Item key={index} {...food} deleteFood={this.deleteFood}/>})}

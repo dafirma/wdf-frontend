@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 import axios from 'axios';
 import { withAuth } from "../lib/AuthProvider";
 ////import SearchPage from './SearchPage';
@@ -75,13 +76,15 @@ class Private extends Component {
   
     return(
       <div>
+   
+    
         <h2> private </h2>
         
         <Switch>
         <Dashboard recipes={this.state.recipes} status={this.state.status} sendData={this.getData}/>
         
         
-        </Switch>      
+        </Switch>     
         </div>
     )
   }

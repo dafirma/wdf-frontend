@@ -3,35 +3,48 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 //import { FoodConsumer } from '../lib/FoodContext';
+import '../stylesheets/Navbar.scss'
+import home from '../image/home-icon.png'
+import storage from '../image/dieta.png'
+import favorite from '../image/favorite-list.png'
+import search from '../image/lupa.png'
+import logoutIcon from '../image/logout.png'
+
 class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
-      <div>
-        {isLoggedin ? (
+      <div /* className='Login' */>
+      <div className='Navigation'/* className='container-login' */>
+      {isLoggedin ? (
           <>
-            <p>username: {user.username}</p>
-            <p>favorites:</p>
-            <button onClick={logout}>Logout</button>
-
+           {/*  <p>username: {user.username}</p> */}
             <ul>
-              <li><Link to='/private'>Home</Link></li>
-              <li><Link to='/storage'>Storage</Link></li>
-              <li><Link to='/search'>Search</Link></li>
-              <li><Link to='/favorites'>Favorites </Link></li>
-              <li><Link to='/test'>Test</Link></li>
-
+              <li><Link to='/private'><img src={home} alt='home' width='50%'/></Link></li>
+              <li><Link to='/storage'><img src={storage} alt='storage' width='50%'/></Link></li>
+              <li><Link to='/search'><img src={search} alt='search' width='50%'/></Link></li>
+              <li><Link to='/favorites'><img src={favorite} alt='favorite' width='50%'/></Link></li>
+              <li><Link to='/login' onClick={logout}><img src={logoutIcon} alt='logout' width='50%'/></Link></li>
+             {/*  <li><Link to='/test'>test</Link></li> */}
             </ul> 
 
            
             
           </>
         ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-          </>
+          <div className = 'link-signup-login'>
+          
+          <ul>
+          {/* <li> <Link to="/login">Login</Link></li>  */}
+           {/* <li> <Link to="/signup">SignUp</Link></li> */}
+            
+          </ul>
+            
+          </div>
         )}
+      
+      </div>
+        
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { withAuth } from '../lib/AuthProvider';
 import axios from 'axios';
+import '../stylesheets/Cards.scss'
 
 
 class Favorites extends Component {
@@ -72,17 +73,26 @@ class Favorites extends Component {
         <h2>FAVORITES</h2>
           {favoriteId !== undefined ?
             favoriteId.map((recipe,index) => 
-            <div key={index}>
-              <button onClick={() => this.clickDelete(recipe.uri,index)}> delete favorite</button>
-              <p>{recipe.label}</p>
-              <img src={recipe.image} alt={recipe.title}/>
-              <p>Calories: {parseInt(recipe.calories)}</p>
-              <div>
-                <p>health Labels:</p> 
-                {recipe.healthLabels.map((cardHealth, indexHealth)=>
-                  <p key={indexHealth}>{cardHealth}</p>)}
-              </div>
-            </div>) : <div>nothing to see here</div>} 
+            <div key={index} className='container-food'>
+      <div className='container-image'>
+      <img src = {recipe.image} alt={recipe.label}/>
+
+      </div>
+        <p className='recipe-title'>{recipe.label}</p>
+        <hr/>
+        {/* <p>{recipe.RecipeID}</p> */}
+        <div className='container-icon-card'>
+        <p><span>{recipe.totalTime}</span> Minutes</p>
+        <p><span>{recipe.ingredientLines.length} </span>Ingredients</p>
+        <p><span>{recipe.yield}</span> Servings</p>
+        <p><span>{parseInt(recipe.calories)} </span> Kcal</p>
+          </div>
+        <p>Health Labels:</p>
+        <div className='container-health-label'>
+        {recipe.healthLabels.map((cardHealth, indexHealth)=>
+          <p key={indexHealth}><span>{cardHealth}</span>/</p>)}
+          </div>
+          </div>) : <div>nothing to see here</div>} 
       </div>
     )
   }

@@ -4,7 +4,8 @@ import { withAuth } from '../lib/AuthProvider';
 //import axios from 'axios';
 import {Link} from 'react-router-dom'
 //import {FavButton} from '../components/FavButton'
-import axios from 'axios'
+import axios from 'axios';
+import '../stylesheets/Cards.scss'
 
 //import { FoodConsumer } from '../lib/FoodContext';
 
@@ -61,34 +62,48 @@ class Dashboard extends Component{
       return 'Loading...'
       case 'isLoaded':
     return(
-      <div>
-        
+      <div className='container-private'>
         <h2>Based on your preferences</h2>
-        {/* <FoodConsumer> */}    
-          {recipes.map((recipe,index)=>
-          <div key={recipe.recipe.uri}>
-          <form onSubmit ={this.handleFormSubmit}>
-          {/* <button onClick ={() => this.clickWord(teste)}>word</button> */}
+      {recipes.map((recipe,index)=>
+      <div key={index} className='container-food'>
+      <div className='container-image'>
+      <img src = {recipe.recipe.image} alt={recipe.recipe.label}/>
+
+      </div>
+        <p className='recipe-title'>{recipe.recipe.label}</p>
+        <hr/>
+        {/* <p>{recipe.RecipeID}</p> */}
+        <div className='container-icon-card'>
+        <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
+        <p><span>{recipe.recipe.ingredientLines.length} </span>Ingredients</p>
+        <p><span>{recipe.recipe.yield}</span> Servings</p>
+        <p><span>{parseInt(recipe.recipe.calories)} </span> Kcal</p>
+          </div>
+        <p>Health Labels:</p>
+        <div className='container-health-label'>
+        {recipe.recipe.healthLabels.map((cardHealth, indexHealth)=>
+          <p key={indexHealth}><span>{cardHealth}</span>/</p>)}
+          </div>
           <button onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
-              <Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}}>
-          <img src = {recipe.recipe.image} alt={recipe.recipe.label}/>
-          <p>{recipe.recipe.label}</p>
-          <p>Calories: {parseInt(recipe.recipe.calories)}</p>
-          <div>
-           <p>health Labels:</p> 
-           {recipe.recipe.healthLabels.map((cardHealth, indexHealth)=>
-            <p key={indexHealth}>{cardHealth}</p>)}
-          </div>
-            </Link>
-            </form>
-           
-          </div>)}
-          </div>
+        </div>
+        )}
+    </div>
           )   
           }   
     }
 }
 export default withAuth(Dashboard);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -110,3 +125,31 @@ export default withAuth(Dashboard);
     }
    
   }  */
+
+
+
+  // return(
+  //   <div>
+      
+  //     <h2>Based on your preferences</h2>
+  //     {/* <FoodConsumer> */}    
+  //       {recipes.map((recipe,index)=>
+  //       <div key={recipe.recipe.uri}>
+  //       <form onSubmit ={this.handleFormSubmit}>
+  //       {/* <button onClick ={() => this.clickWord(teste)}>word</button> */}
+  //       <button onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
+  //           <Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}}>
+  //       <img src = {recipe.recipe.image} alt={recipe.recipe.label}/>
+  //       <p>{recipe.recipe.label}</p>
+  //       <p>Calories: {parseInt(recipe.recipe.calories)}</p>
+  //       <div>
+  //        <p>health Labels:</p> 
+  //        {recipe.recipe.healthLabels.map((cardHealth, indexHealth)=>
+  //         <p key={indexHealth}>{cardHealth}</p>)}
+  //       </div>
+  //         </Link>
+  //         </form>
+         
+  //       </div>)}
+  //       </div>
+  //       ) 

@@ -17,6 +17,7 @@ import RecipeDetails from './pages/RecipeDetails';
 import Test from './pages/Test';
 import TestDetails from "./pages/TestDetails";
 //import FoodProvider from "./lib/FoodProvider";
+//import './stylesheets/App.scss'
 
 class App extends Component {
   constructor(props){
@@ -37,13 +38,13 @@ class App extends Component {
   render() {
     return (
       <AuthProvider>
-        <div className="container">
-          <h1>WHAT DA FOOD</h1>
+        <div>
+           {/* <h1>WHAT DA FOOD</h1>  */}
           
           <Navbar />
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
-            <AnonRoute path="/login" component={Login} />
+            <AnonRoute path="/Login" component={Login} />
             <PrivateRoute path exact ='/'component={SearchPage}/>
             <PrivateRoute path="/private" component={Private} sendToApp={this.getDataForPrivateFavorites}/>
             <PrivateRoute path ='/storage' component={Storage}/>

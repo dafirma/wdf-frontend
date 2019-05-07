@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import '../stylesheets/Search.scss'
 //import RecipeList from '../pages/RecipeList';
 //import axios from 'axios';
 class SearchBar extends Component {
   constructor(props){
     super(props);
     this.state = { term: '',
+    shown: true,
    };
 
   // console.log(this.recipes);
@@ -33,7 +35,8 @@ class SearchBar extends Component {
     //const {recipes} = this.state;
     //console.log(recipes);
     return (
-      <div className='ui search-bar'>
+      <div className="Search">
+      <div className='search-bar'>
       <h2>Search</h2>
         <form className='ui form' onSubmit={this.onFormSubmit}>
           <input
@@ -45,6 +48,7 @@ class SearchBar extends Component {
           />
           <button type='submit'> Search</button>
         </form>
+      </div>
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+import logo from '../image/whatdafood_logo.png';
+import '../stylesheets/Signup.scss';
 class Signup extends Component {
   state = {
     username: "",
@@ -22,32 +24,46 @@ class Signup extends Component {
   render() {
     const { username, password, preference } = this.state;
     return (
-      <div>
+      <div className='container-signup'>
+      <div className='container-logo'>
+            <img src = {logo} alt='logo-wdf'/>
+          </div> 
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
+        <div className='container-input'>
+          <label></label>
           <input
             type="text"
             name="username"
+            placeholder='Username'
             value={username}
             onChange={this.handleChange}
           />
-          <label>Password:</label>
+
+        </div>
+        <div className='container-input'> 
+          <label></label>
           <input
             type="password"
             name="password"
             value={password}
+            placeholder='Password'
             onChange={this.handleChange}
           />
-          <label>Preference:</label>
+
+        </div>
+          <div className='container-input'>
+          <label></label>
           <input
             type="text"
             name="preference"
             value={preference}
+            placeholder='Favorite food'
             onChange={this.handleChange}
           />
+          </div>
           <input type="submit" value="Signup" />
         </form>
-        <p>
+        <p className='text-signup'>
           Already have account?
           <Link to={"/login"}> Login</Link>
         </p>
