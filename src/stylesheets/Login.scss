@@ -1,0 +1,95 @@
+/* html {
+  
+} */
+
+/* .Login{
+  height: 100%;
+  //width: 100%;
+  background-color:white; 
+  padding: 10% 3%;
+  margin: 16% auto;
+  form{
+    //margin:35% auto;
+    width: 100%;
+    //display: flex;
+    align-content: center;
+    border-radius: 10px;
+    justify-content: center;
+    
+    input {
+    
+      font-size: 1.3rem;
+      height: 3rem;
+      border: none;
+      padding-bottom: 2%;
+      border-bottom: lightgray solid 1px;
+      width: 100%;
+
+      
+    }
+    label{
+      height: 1.5rem;
+      border:none;
+      border-bottom: lightgrey solid 1px;
+    }
+    
+  }
+  
+} */
+.container-login{
+  max-width: 100%;
+  background-color:#fafafa; 
+  height: 100%;
+  padding: 0 0 100%;
+}
+form{
+  //margin:35% auto;
+  width: 90%;
+  //display: flex;
+  align-content: center;
+  border-radius: 10px;
+  justify-content: center;
+  margin-left:5%;
+  padding-top:10%;
+}
+input {  
+  font-size: 1.3rem;
+  height: 3rem;
+  border: none;
+  padding: 5% 11% 2% 5%;
+  border-bottom: lightgray solid 1px;
+  width: 85%; 
+  border-radius: 10px;
+  //padding-bottom: 10%;
+  text-align: center;
+}
+
+
+
+
+
+.btn-login {
+  border-radius: 0.25rem;
+  padding: 5% 41% 5% 43%
+}
+
+.container-logo{
+  padding: 10% 27%;
+}
+.container-input-login{
+  padding-bottom: 5%;
+}
+li{
+  a:visited{
+    color: black;
+  }
+  a{
+    text-decoration:none;
+  }
+  list-style: none;
+  padding-top: 5%;
+  text-align: center;
+}
+.container-main-input{
+  background-color:none;
+}
