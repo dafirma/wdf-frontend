@@ -3,6 +3,7 @@ import SearchBar from '../components/SearchBar';
 import { withAuth } from '../lib/AuthProvider';
 import axios from 'axios';
 import RecipeList from './RecipeList';
+import '../stylesheets/Search.scss'
 
 class SearchPage extends Component {
   constructor(){
@@ -24,7 +25,7 @@ class SearchPage extends Component {
    }
    render(){
      return(
-       <div>
+       <div className='container-searchPage'>
          <SearchBar onTermSubmit={this.onTermSubmit}/>
          <RecipeList recipes={this.state.recipes} status={this.state.status}/>
 

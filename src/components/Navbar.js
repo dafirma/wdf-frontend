@@ -25,7 +25,7 @@ class Navbar extends Component {
               <li><Link to='/search'><img src={search} alt='search' width='50%'/></Link></li>
               <li><Link to='/favorites'><img src={favorite} alt='favorite' width='50%'/></Link></li>
               <li><Link to='/login' onClick={logout}><img src={logoutIcon} alt='logout' width='50%'/></Link></li>
-             {/*  <li><Link to='/test'>test</Link></li> */}
+               <li><Link to='/test'>test</Link></li> 
             </ul> 
 
            

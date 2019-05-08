@@ -35,6 +35,7 @@ class SearchBar extends Component {
     //const {recipes} = this.state;
     //console.log(recipes);
     return (
+      
       <div className="Search">
       <div className='search-bar'>
       <h2>Search</h2>

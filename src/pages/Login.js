@@ -54,13 +54,13 @@ class Login extends Component {
         />
         </div>
         <div >
-        <button className='btn-login' type="submit" >Login</button>
+        <button className='btn-login' type="submit"><p>Login</p></button>
         </div>
         
         </div>
         
       </form>
-     <li> <Link to="/signup"> To create accoutn Sign Up</Link></li>
+     <li> To create account <Link to="/signup"><span className='text-to-signup'>Sign Up</span></Link></li>
      </div>
     </div>
       

@@ -5,7 +5,8 @@ import { withAuth } from '../lib/AuthProvider';
 import {Link} from 'react-router-dom'
 //import {FavButton} from '../components/FavButton'
 import axios from 'axios';
-import '../stylesheets/Cards.scss'
+import '../stylesheets/Cards.scss';
+import spinner from '../image/Rolling-1s-200px.gif'
 
 //import { FoodConsumer } from '../lib/FoodContext';
 
@@ -54,39 +55,60 @@ class Dashboard extends Component{
      console.log(favoriteId);  
      this.props.sendData({favoriteId})
    }
+   clickHandlerFav(event){
+     console.log(event);
+   }
  
   render () {
     const { recipes, status} = this.props;
+    console.log(status)
     switch(status){
       case 'isLoading':
-      return 'Loading...'
+      return (
+        <div className='spinner'>
+      <img src={spinner} alt='git'/>
+      </div>
+      )
       case 'isLoaded':
     return(
       <div className='container-private'>
         <h2>Based on your preferences</h2>
-      {recipes.map((recipe,index)=>
-      <div key={index} className='container-food'>
-      <div className='container-image'>
-      <img src = {recipe.recipe.image} alt={recipe.recipe.label}/>
-
-      </div>
-        <p className='recipe-title'>{recipe.recipe.label}</p>
-        <hr/>
-        {/* <p>{recipe.RecipeID}</p> */}
-        <div className='container-icon-card'>
-        <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
-        <p><span>{recipe.recipe.ingredientLines.length} </span>Ingredients</p>
-        <p><span>{recipe.recipe.yield}</span> Servings</p>
-        <p><span>{parseInt(recipe.recipe.calories)} </span> Kcal</p>
-          </div>
-        <p>Health Labels:</p>
-        <div className='container-health-label'>
-        {recipe.recipe.healthLabels.map((cardHealth, indexHealth)=>
-          <p key={indexHealth}><span>{cardHealth}</span>/</p>)}
-          </div>
-          <button onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
+        {recipes.map((recipe,index)=>
+        <div key={index} className='container-food'>
+        <div className='container-image'>
+        <img src = {recipe.recipe.image} alt={recipe.recipe.label}/>
+        
         </div>
-        )}
+          <p className='recipe-title'>{recipe.recipe.label}</p>
+          <hr/>
+          {/* <p>{recipe.RecipeID}</p> */}
+          <div className='container-icon-card'>
+          <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
+          <p><span>{recipe.recipe.ingredientLines.length} </span>Ingredients</p>
+          <p><span>{recipe.recipe.yield}</span> Servings</p>
+          {/* <p><span>{parseInt(recipe.calories)} </span> Kcal</p> */}
+          
+            </div>
+          {/* <p>Health Labels:</p> */}
+          {/* <div className='container-health-label'>
+            {recipe.healthLabels.map((cardHealth, indexHealth)=>
+            <p key={indexHealth}>{cardHealth}</p>)}
+          </div> */}
+          <div className='container-btn-view-and-fav'>
+            <div className='container-btn'>
+            <Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}} ><button className='btn-view-recipe'>recipe</button></Link>
+            </div>
+            <div className='container-fav'>
+              <button className='btn-fav' onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
+            </div>
+          </div>      
+          </div>
+          )}
+
+
+
+
+      
     </div>
           )   
           }   
@@ -94,6 +116,32 @@ class Dashboard extends Component{
 }
 export default withAuth(Dashboard);
 
+//<Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}}>
+
+
+// {recipes.map((recipe,index)=>
+//   <div key={index} className='container-food'>
+//   <div className='container-image'>
+//   <img src = {recipe.recipe.image} alt={recipe.recipe.label}/>
+
+//   </div>
+//     <p className='recipe-title'>{recipe.recipe.label}</p>
+//     <hr/>
+//     {/* <p>{recipe.RecipeID}</p> */}
+//     <div className='container-icon-card'>
+//     <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
+//     <p><span>{recipe.recipe.ingredientLines.length} </span>Ingredients</p>
+//     <p><span>{recipe.recipe.yield}</span> Servings</p>
+//     <p><span>{parseInt(recipe.recipe.calories)} </span> Kcal</p>
+//       </div>
+//     <p>Health Labels:</p>
+//     <div className='container-health-label'>
+//     {recipe.recipe.healthLabels.map((cardHealth, indexHealth)=>
+//       <p key={indexHealth}><span>{cardHealth}</span>/</p>)}
+//       </div>
+//       <button onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
+//     </div>
+//     )}
 
 
 
@@ -101,30 +149,12 @@ export default withAuth(Dashboard);
 
 
 
+//<Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}}>
 
 
 
 
 
-
-
-
-  /* async clickHandler(recipe){
-    let newItem = recipe;
-    console.log(recipe);
-    if(this.state.favoriteId.length === 0){
-      this.setState({
-        favoriteId:[newItem]
-        })
-    }else{
-      const favoriteIdCopy = [...this.state.favoriteId]
-      favoriteIdCopy.push(newItem)
-      this.setState({
-        favoriteId:[favoriteIdCopy]
-      })
-    }
-   
-  }  */
 
 
 

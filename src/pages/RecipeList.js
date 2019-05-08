@@ -75,7 +75,7 @@ class RecipeList extends Component {
         return 'Loading...'
         case 'isLoaded':
           return(
-        <div>
+        <div className='container-list-search'>
          {recipes.map((recipe,index)=>
       <div key={index} className='container-food'>
       <div className='container-image'>
