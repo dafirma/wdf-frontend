@@ -9,7 +9,7 @@ class RecipeList extends Component {
     super(props);
     this.state = { 
         recipes:[],
-        status:'isLoading',
+       // status:this.props,
         favoriteId:[]
     }
     this.server = axios.create({
@@ -45,10 +45,12 @@ class RecipeList extends Component {
   
 
   render(){
-    const { recipes, status } = this.props; 
+    const { recipes, status} = this.props; 
+    //const { status } =this.state;
     let sizeObj = Object.keys(recipes).length;
     console.log(sizeObj);
     console.log(recipes);
+  
     if(sizeObj === 3 ){
       return(
         <div>
@@ -72,7 +74,7 @@ class RecipeList extends Component {
       // eslint-disable-next-line default-case
       switch(status){
         case 'isLoading':
-        return 'Loading...'
+        return ''
         case 'isLoaded':
           return(
         <div className='container-list-search'>
@@ -83,7 +85,7 @@ class RecipeList extends Component {
 
       </div>
         <p className='recipe-title'>{recipe.recipe.label}</p>
-        <hr/>
+        
         {/* <p>{recipe.RecipeID}</p> */}
         <div className='container-icon-card'>
         <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
@@ -94,9 +96,19 @@ class RecipeList extends Component {
         <p>Health Labels:</p>
         <div className='container-health-label'>
         {recipe.recipe.healthLabels.map((cardHealth, indexHealth)=>
-          <p key={indexHealth}><span>{cardHealth}</span>/</p>)}
+          <p key={indexHealth}><span>{cardHealth}</span> /</p>)}
           </div>
-          <button onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
+          <div className='container-view-fav'> 
+            <div>
+            <Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}} >
+            <button className='btn-view-recipe'><span>Recipe</span></button>
+            </Link>
+            </div>
+            <div>
+            <button className='btn-fav-list' onClick={()=> this.clickHandler(recipe.recipe)}><span>Favorite</span></button>
+            </div>
+          </div>
+          
         </div>
         )}          
           </div>

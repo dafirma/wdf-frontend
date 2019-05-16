@@ -4,20 +4,35 @@
 }
 .container-signup form{
    //margin:35% auto;
-   width: 90%;
-   //display: flex;
-   align-content: center;
+  //  width: 90%;
+  //  //display: flex;
+  //  align-content: center;
+  //  border-radius: 10px;
+  //  justify-content: center;
+  //  margin-left:5%;
+  //  padding-top:7%;
+  //  display: flex;
+
+}
+
+.form-signup{
+  width: 90%;
+  align-content: center;
    border-radius: 10px;
    justify-content: center;
    margin-left:5%;
    padding-top:7%;
+   display: flex;
+
 
 }
-.container-form{
+/* .container-form{
   background-color: black;
   height: 200px;
+} */
+.container-form{
+  display: flex;
 }
-
 
 input {  
   font-size: 1.3rem;

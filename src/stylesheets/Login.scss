@@ -41,6 +41,7 @@
   background-color:#fafafa; 
   height: 100%;
   padding: 0 0 100%;
+  overflow: hidden;
 }
 form{
   //margin:35% auto;
@@ -65,7 +66,10 @@ input {
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1607843137254902);
 }
 
-
+.login{
+  overflow: hidden;
+  height: 100%;
+}
 
 .text-to-signup{
   color: #2da6bb;

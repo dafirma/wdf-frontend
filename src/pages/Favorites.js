@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { withAuth } from '../lib/AuthProvider';
 import axios from 'axios';
-import '../stylesheets/Cards.scss'
+import '../stylesheets/Cards.scss';
+import {Link} from 'react-router-dom';
 
 
 class Favorites extends Component {
@@ -17,6 +18,7 @@ class Favorites extends Component {
     
     this.server = axios.create({
       baseURL:'http://localhost:5000',
+      //process.env.REACT_APP_FIREBASE
       withCredentials: true
     });
   }
@@ -62,21 +64,22 @@ class Favorites extends Component {
 
   render(){
     const {favoriteId} = this.state;
+    console.log(favoriteId);
     //const test = this.props
-    console.log(this.getData)
+    /* console.log(this.getData)
     console.log('session:',this.props.user)
     console.log(this.state.favoriteId)
     console.log('favorites: ',this.state.favoriteId)
+    console.log(this.props.location) */
 
     return(
-      <div>
+      <div className='container-favorite'>
         <h2>FAVORITES</h2>
           {favoriteId !== undefined ?
             favoriteId.map((recipe,index) => 
             <div key={index} className='container-food'>
       <div className='container-image'>
-      <img src = {recipe.image} alt={recipe.label}/>
-
+      <img src = {recipe.image} alt={recipe.label}/>          
       </div>
         <p className='recipe-title'>{recipe.label}</p>
         <hr/>
@@ -91,6 +94,9 @@ class Favorites extends Component {
         <div className='container-health-label'>
         {recipe.healthLabels.map((cardHealth, indexHealth)=>
           <p key={indexHealth}><span>{cardHealth}</span>/</p>)}
+          </div>
+          <div className='container-btn-recipe'>
+          <Link to={{pathname:`/abc/${recipe}`, state:{recipe}}}><button className='btn-recipe'><span>Recipe</span></button></Link>
           </div>
           </div>) : <div>nothing to see here</div>} 
       </div>

@@ -6,7 +6,7 @@ class AddFood extends Component {
   constructor(props){
     super(props);
     this.state= {
-      name: '',
+      title: '',
       quantity:'',
      // image:'https://www.rd.com/wp-content/uploads/2018/04/9-Foods-You-Should-Never-Eat-Before-Bed-760x506.jpg'
     }
@@ -15,7 +15,7 @@ class AddFood extends Component {
     event.preventDefault()
     this.props.addFood(this.state)
     this.setState({
-        name: '',
+        title: '',
         quantity: ''
     })
 }
@@ -31,7 +31,7 @@ render()
           <div className='container-form'>
           <div className='container-text'>
            <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={(event) => this.handleChange(event)} />
+          <input type="text" name="title" value={this.state.title} onChange={(event) => this.handleChange(event)} />
           </div>
             <button className="button is-info" type="submit">Add food</button>
           
@@ -43,5 +43,6 @@ render()
   )
 }
 }
+
 
 export default AddFood;

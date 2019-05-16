@@ -80,7 +80,7 @@ class Dashboard extends Component{
         
         </div>
           <p className='recipe-title'>{recipe.recipe.label}</p>
-          <hr/>
+          {/* <hr/> */}
           {/* <p>{recipe.RecipeID}</p> */}
           <div className='container-icon-card'>
           <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
@@ -96,10 +96,13 @@ class Dashboard extends Component{
           </div> */}
           <div className='container-btn-view-and-fav'>
             <div className='container-btn'>
-            <Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}} ><button className='btn-view-recipe'>recipe</button></Link>
+            <Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}} >
+            <button className='btn-view-recipe'><span>Recipe</span></button>
+            </Link>
             </div>
             <div className='container-fav'>
-              <button className='btn-fav' onClick={()=> this.clickHandler(recipe.recipe)}>favorite</button>
+              <button className='btn-fav' onClick={()=> this.clickHandler(recipe.recipe)}>
+              <span>Favorite</span></button>
             </div>
           </div>      
           </div>

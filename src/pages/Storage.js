@@ -10,9 +10,11 @@ import axios from 'axios';
 class Storage extends Component {
   constructor(props){
     super(props);
+    this.getData = this.props.getData
     this.state={
       foods: [],
-      menu: []
+      menu: [],
+  
     }
     this.server = axios.create({
       baseURL:'http://localhost:5000',
@@ -32,18 +34,34 @@ class Storage extends Component {
     })
   }
 
-  deleteFood = (foodIndex,foodName) => {
+  deleteFood = food => {
     const foodsCopy = [...this.state.foods]
     const menuCopy = [...this.state.menu]
-    console.log(foodIndex)
-    console.log(foodName)
-    this.server.post('/food/storage',{foodName})
+    console.log(food);
+    console.log(menuCopy)
+   /*  menuCopy.forEach(elem =>{
+      if(elem.name === food.name){
+        let temp = parseInt(elem.quantity) - parseInt(food.quantity);
+        console.log(temp)
+        elem.quantity = temp
+      }
+    }) */
+  
+    
+    
+   /*  menuCopy.forEach(elem => {
+      if(elem.name === foodName){
+        let temp = parseInt(elem.quantity) - parseInt(foodQnt)
+        console.log('sub',temp)
+      }
+    }) */
+    /* this.server.post('/food/storage',{foodName})
      foodsCopy.splice(foodIndex, 1)
      menuCopy.splice(foodIndex, 1)
     this.setState({
         foods: foodsCopy,
         menu: menuCopy
-    })
+    }) */
   }
 
   /* addMenu = plusFood =>{
@@ -52,16 +70,18 @@ class Storage extends Component {
     console.log(foodsCopy.quantity)
   } */
 
-  addMenu = food =>{
-    console.log(food);
+  addMenu = tempFood =>{
+    console.log(tempFood);
     let menuCopy = [...this.state.menu];
     let exists = false;
+    let food = tempFood;
     menuCopy.forEach(elem =>{
-      if(elem.name === food.name){
+      if(elem.title === food.title){
 
         let temp = parseInt(elem.quantity) + parseInt(food.quantity);
         console.log(temp)
         elem.quantity = temp
+        food.quantity = temp;
        // elem.quantity += food.quantity;
         exists = true;
       }
@@ -69,19 +89,23 @@ class Storage extends Component {
     if(!exists){
       menuCopy.push(food)
     }
-    this.setState({
-      menu: menuCopy
-    })
-    const menu = menuCopy;
-    this.server.put('/food/storage', {menu})
+    this.server.put(`/food/storage/new`, {food})
     .then(response =>{
-      console.log(response.data)
+      console.log(response.data.storage)
+      this.setState({
+        menu: response.data.storage
+      })
     })
     .catch(error =>{
       console.log(error)
     })
+
+    const menu = menuCopy;
+    console.log(food.quantity)
+    console.log('atualizado:',food.quantity)
+    this.setStorage()
   }
-  setStorage(){
+   setStorage(){
     const res = this.server.get('/food/storage')
     .then(result =>{
       console.log(result.data.storage)
@@ -90,15 +114,11 @@ class Storage extends Component {
        }) 
      })
   }
-
+//olhar porque nao devolve a array atualizada do backend em funcao das cookies
 
   render(){
     let foodList = [...this.state.foods];
     let newMenu = [...this.state.menu]
-    //let storageServer;
-    console.log(newMenu)
-    console.log(foodList)
-    console.log(this.props.user)
     return(
       <div className='container-storage'>
         <h2>STORAGE</h2>

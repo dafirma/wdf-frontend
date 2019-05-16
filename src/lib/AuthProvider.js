@@ -107,7 +107,11 @@ class AuthProvider extends Component {
           user
         });
       })
-      .catch(() => {});
+      .catch(({response:{data:error}}) => {
+        this.setState({
+          message:error.statusMessage
+        })
+      });
   };
 
   logout = () => {
@@ -120,15 +124,7 @@ class AuthProvider extends Component {
         });
       })
       .catch(() => {});
-  };
-
-  test = test =>{
-    const a = test;
-    this.setState({
-      favoriteId: a
-    })
-  }
- 
+  }; 
 
   render() {
     const { isLoading, isLoggedin, user } = this.state;

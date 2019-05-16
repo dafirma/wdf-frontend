@@ -28,15 +28,28 @@ class Private extends Component {
       withCredentials: true
     });
   }
+ 
    async componentDidMount(){
       this._isMounted = true;
       const edaId = 'd5c3f152';
       const edaKey = '71a22a30005b3166674bfb754a7d10ff';
+    
+
+     let randomNumber = (min, max) => {
+        return Math.floor(Math.random() * (max - min)) + min;
+      
+      };
+      let a = randomNumber(0,50);
+      let b = randomNumber(60,100);
+      
+      
+    
+      
       const {ingPreference} =this.state;
       //const {favorites} =this.state
       console.log(edaId);
       console.log(ingPreference);
-      const response = await axios.get(`https://api.edamam.com/search?q=${ingPreference}&app_id=${edaId}&app_key=${edaKey}&from=0&to=10`)
+      const response = await axios.get(`https://api.edamam.com/search?q=${ingPreference}&app_id=${edaId}&app_key=${edaKey}&from=${a}&to=${b}`)
       if(this._isMounted){
         this.setState({
           recipes:response.data.hits,
@@ -49,24 +62,13 @@ class Private extends Component {
     
 
    getData = (val) => { 
-     //let favCopy = this.state.favoriteId;
      const {favoriteId} = val
-    // console.log(favoriteId)
      this.setState({
        favoriteId: [favoriteId]
      })
-     //this.props.sendToAuth({favoriteId})
      console.log(this.state.favoriteId)
      console.log(this.props)
-     /* return this.server
-     .put('/food/favorite', {favoriteId})
-     .then((res) =>{
-       console.log(res)
-     })
-     .catch(error =>{
-       console.log(error)
-     }) */
-    // this.props.test({favoriteId})
+     
    }
 
 
@@ -78,7 +80,7 @@ class Private extends Component {
       <div>
    
     
-        <h2> private </h2>
+       {/*  <h2> private </h2> */}
         
         <Switch>
         <Dashboard recipes={this.state.recipes} status={this.state.status} sendData={this.getData}/>
@@ -92,20 +94,3 @@ class Private extends Component {
 
 export default withAuth(Private);
  
-/* 
-
-render(){
-  const {recipe} =this.state
-
-  return(
-    <div>
-      <h2> private </h2>
-      
-      <Switch>
-      <Dashboard recipes={this.state.recipes} status={this.state.status} sendData={this.getData}/>
-      
-      
-      </Switch>      
-      </div>
-  )
-} */

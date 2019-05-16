@@ -1,11 +1,31 @@
 .container-box{
-  padding:10%;
+  //padding:10%;
   display: flex;
 }
 .container-form{
   display: flex;
-  padding:0% 2% 0% 0%;
+  //padding:0% 2% 0% 0%;
  }
- .container-text{
+ .container-text-storage{
    padding: 0% 5% 0% 0%; 
+   input{
+     height: 2rem;
+     background-color: #c8cbce63;
+     width: 70%;
+   }
+   label{
+     display: block;
+   }
+ }
+ .btn-add-food{
+   padding: 5% 3% 5% 3%;
+ }
+ .container-btn-add{
+   padding: 5% 0% 0%  0%;
+ }
+ .btn-counter{
+   padding:20%;
+ }
+ .control{
+   display: flex;
  }

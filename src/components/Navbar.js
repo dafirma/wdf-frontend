@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 //import { FoodConsumer } from '../lib/FoodContext';
 import '../stylesheets/Navbar.scss'
-import home from '../image/home-icon.png'
+import home from '../image/casa_transp.png'
 import storage from '../image/dieta.png'
-import favorite from '../image/favorite-list.png'
-import search from '../image/lupa.png'
+import favorite from '../image/star_transp.png'
+import search from '../image/lupa _thin.png'
 import logoutIcon from '../image/logout.png'
 
 class Navbar extends Component {
@@ -15,7 +15,7 @@ class Navbar extends Component {
     const { user, logout, isLoggedin } = this.props;
     return (
       <div /* className='Login' */>
-      <div className='Navigation'/* className='container-login' */>
+      <div className='navigation'/* className='container-login' */>
       {isLoggedin ? (
           <>
            {/*  <p>username: {user.username}</p> */}
@@ -25,7 +25,7 @@ class Navbar extends Component {
               <li><Link to='/search'><img src={search} alt='search' width='50%'/></Link></li>
               <li><Link to='/favorites'><img src={favorite} alt='favorite' width='50%'/></Link></li>
               <li><Link to='/login' onClick={logout}><img src={logoutIcon} alt='logout' width='50%'/></Link></li>
-               <li><Link to='/test'>test</Link></li> 
+            <li><Link to='/test'>test</Link></li> 
             </ul> 
 
            
@@ -33,7 +33,7 @@ class Navbar extends Component {
           </>
         ) : (
           <div className = 'link-signup-login'>
-          
+
           <ul>
           {/* <li> <Link to="/login">Login</Link></li>  */}
            {/* <li> <Link to="/signup">SignUp</Link></li> */}

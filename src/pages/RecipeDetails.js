@@ -10,7 +10,8 @@ const RecipeDetails =(props) =>{
   //const id = props.match.params.id;
   const {recipe} = props.location.state;
   //console.log(id);
-  //console.log(recipe);
+  console.log(recipe);
+  console.log(props.location);
   
 
   return(
@@ -34,7 +35,7 @@ const RecipeDetails =(props) =>{
           <h3>Health Labels</h3> 
             <div className='container-health-label-details'>
           {recipe.recipe.healthLabels.map((cardHealth, indexHealth)=>
-            <p key={indexHealth}>{cardHealth}</p>)}
+            <p key={indexHealth}><span>{cardHealth}</span></p>)}
             </div>
               <h3>Ingredients</h3>
             <div className='container-ingredients'>

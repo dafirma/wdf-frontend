@@ -17,7 +17,8 @@ import RecipeDetails from './pages/RecipeDetails';
 import Test from './pages/Test';
 import TestDetails from "./pages/TestDetails";
 //import FoodProvider from "./lib/FoodProvider";
-//import './stylesheets/App.scss'
+import FavoriteDetails from './pages/FavoriteDetails';
+import './stylesheets/App.scss'
 
 class App extends Component {
   constructor(props){
@@ -41,7 +42,7 @@ class App extends Component {
         <div>
            {/* <h1>WHAT DA FOOD</h1>  */}
           
-          <Navbar />
+         
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/Login" component={Login} />
@@ -50,10 +51,12 @@ class App extends Component {
             <PrivateRoute path ='/storage' component={Storage}/>
             <PrivateRoute path  ='/search' component={SearchPage}/>
             <PrivateRoute path  ='/favorites' component={Favorites} manu={{manu: 'manu'}} favoriteId={this.state.favoriteId} getData={()=>this.getDataForPrivateFavorites}/>
+            <PrivateRoute path ='/abc' component={FavoriteDetails}/>
             <PrivateRoute path ='/recipe/:id' component={RecipeDetails}/>
             <PrivateRoute path = '/test' component={Test} />
             <PrivateRoute path = '/test/:id' component={TestDetails} />
           </Switch>
+          <Navbar />
         </div>
       </AuthProvider>
     );

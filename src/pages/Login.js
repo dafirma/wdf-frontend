@@ -8,7 +8,13 @@ import {Link} from 'react-router-dom';
 class Login extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    formErrors:{
+      email:'', password:''
+    },
+    emailValid:false,
+    passwordValid:false,
+    formValid:false
   };
 
   handleFormSubmit = event => {
@@ -16,6 +22,7 @@ class Login extends Component {
     const { username, password } = this.state;
     this.props.login({ username, password });
   };
+  
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -24,8 +31,10 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
+    console.log(this.props)
     return (
-      <div className='Login'>
+      <div className='parent-login'>
+      <div className='login'>
         <div className='container-login'>
           <div className='container-logo'>
             <img src = {logo} alt='logo-wdf'/>
@@ -62,6 +71,7 @@ class Login extends Component {
       </form>
      <li> To create account <Link to="/signup"><span className='text-to-signup'>Sign Up</span></Link></li>
      </div>
+    </div>
     </div>
       
     );

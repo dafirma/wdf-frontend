@@ -25,22 +25,23 @@ class Signup extends Component {
     const { username, password, preference } = this.state;
     return (
       <div className='container-signup'>
-      <div className='container-logo'>
+        <div className='container-logo'>
             <img src = {logo} alt='logo-wdf'/>
-          </div> 
-        <form onSubmit={this.handleFormSubmit}>
-        <div className='container-input'>
-          <label></label>
-          <input
-            type="text"
-            name="username"
-            placeholder='Username'
-            value={username}
-            onChange={this.handleChange}
-          />
+        </div> 
+        <div className='container-form'>
+          <form  className='form-signup' onSubmit={this.handleFormSubmit}>
+          <div className='container-input'>
+            <label></label>
+            <input
+              type="text"
+              name="username"
+              placeholder='Username'
+              value={username}
+              onChange={this.handleChange}
+            />
 
-        </div>
-        <div className='container-input'> 
+          </div>  
+          <div className='container-input'> 
           <label></label>
           <input
             type="password"
@@ -63,6 +64,10 @@ class Signup extends Component {
           </div>
           <input type="submit" value="Signup" />
         </form>
+
+
+          </div>
+        
         <p className='text-signup'>
           Already have account?
           <Link to={"/login"}> Login</Link>
