@@ -9,18 +9,26 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
-    formErrors:{
-      email:'', password:''
-    },
-    emailValid:false,
+    formErrors:'',
+    emailValid: false,
     passwordValid:false,
-    formValid:false
+    formValid:false,
+    
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
     const { username, password } = this.state;
-    this.props.login({ username, password });
+
+    if(username ==='' || password ===''){
+      //console.log('vazio')
+      this.setState({
+        formErrors: true
+      })
+    }else{
+      this.props.login({ username, password });
+
+    }
   };
   
 
@@ -31,8 +39,13 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
+    const {formErrors} = this.state;
     console.log(this.props)
+    
+    //{console.log(this.props.user)}
+
     return (
+    
       <div className='parent-login'>
       <div className='login'>
         <div className='container-login'>
@@ -42,6 +55,8 @@ class Login extends Component {
           <form onSubmit={this.handleFormSubmit}>
         <div className='container-main-input'>
         <div className='container-input-login'> 
+        {formErrors && 
+        <div><h2>Error, fields empty!</h2></div> }
         <label></label>
         <input
           type="text"

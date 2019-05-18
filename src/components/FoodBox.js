@@ -29,25 +29,30 @@ class FoodBox extends Component {
       <div className="container-box">
       <div>
             <p>
-              <strong>{this.props.title}</strong>
+              <strong>{this.props.title}: </strong>
               {/* <small>{this.props.quantity} Un</small> */}
             </p>
             </div>
-          <div>
-              {/* <input
+          {/*<div>
+               <input
                 className="input"
                 type="number" 
                 value={this.state.quantity}
                 onChange= {(event) => this.handleChange(event)}
-              /> */}
-            </div>
+              /> 
+            </div>*/}
             <div className="control">
-              <button className="btn-counter" onClick = {(event) => this.clickHandler(event)}>
-                +
-              </button>
-              <button className="btn-counter" onClick = {(event) => this.clickHandler(event)}>
-                -
-              </button>
+              <div className='container-btn-counter'>
+                <button className="btn-counter-plus" onClick = {(event) => this.clickHandler(event)}>
+                  <span>+</span>
+                </button>
+              </div>
+              <div className='container-btn-counter'>
+                <button className="btn-counter-minus" onClick = {(event) => this.clickHandler(event)}>
+                 <span>-</span>
+                </button>
+              </div>
+              
             </div>
     </div>
     )

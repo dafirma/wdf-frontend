@@ -23,9 +23,23 @@
  .container-btn-add{
    padding: 5% 0% 0%  0%;
  }
- .btn-counter{
-   padding:20%;
+ .btn-counter-plus{
+   padding:15% 60% 15% 60%;
+   span{
+     font-size: 25px;
+   }
  }
+
+ .btn-counter-minus{
+  padding:15% 60% 15% 60%;
+  span{
+    font-size: 25px;
+    text-align: center;
+  }
+}
  .control{
    display: flex;
+ }
+ .container-btn-counter{
+   padding-right: 30%;
  }

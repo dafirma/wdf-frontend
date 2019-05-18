@@ -100,42 +100,7 @@ class SearchBar extends Component {
                     />    Paleo   </label>
                 </div>
             </div>
-              {/* <div>
-                <label>
-                  <input
-                    onChange={this.onInputChange}
-                    value='vegetarian'
-                    name='termHealth'
-                    type='radio'
-                    className='centerInput'
-                    checked={this.termTime ==='vegetarian'}
-                  />Vegetarian
-                </label>
-              </div>
-              <div>
-                <label>
-                  <input
-                    onChange={this.onInputChange}
-                    value='vegan'
-                    name='termHealth'
-                    type='radio'
-                    className='centerInput'
-                    checked={this.termTime ==='vegan'}
-                  />Vegan
-                  </label>
-              </div>
-              <div>
-                <label>
-                  <input
-                    onChange={this.onInputChange}
-                    value='paleo'
-                    name='termHealth'
-                    type='radio'
-                    className='centerInput'
-                    checked={this.termTime ==='paleo'}
-                  />Paleo
-                </label>
-              </div> */}
+              
             </div>
              <h2>How many minutes</h2>
           <div className='container-health'>
@@ -189,7 +154,7 @@ class SearchBar extends Component {
           />
           </div> 
           <div className='container-btn-search'>
-            <button className='btn-search'type='submit'><span> Search</span></button>
+            <button className='btn-search'type='submit'><p> Search</p></button>
           </div>
         </div>
         </form>

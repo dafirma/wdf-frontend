@@ -34,7 +34,8 @@
   display: flex;
 } */
 .btn-search{
-  padding:2% 20% 2% 20%;
+  //padding:2% 20% 2% 20%;
+  padding: 2px 48px 2px 48px;
 }
 .container-time{
   display: flex;
@@ -46,6 +47,7 @@
 .container-calories{
   display: flex;
   padding-left: 4%;
+  padding-bottom: 8%;
   input{
     height: 10%;
     width: 16%;
@@ -108,7 +110,7 @@
   border:none;
 }
 .container-input-search{
-  //padding-left: 20%;
+  padding-bottom: 20%;
   input{
     background-color: #c8cbce63;
     //height: 10%;
@@ -124,10 +126,11 @@
   }
 }
 .container-btn-search{
-  padding:4% 0 0 23%;
-  span{
+  padding:4% 0 0 26%;
+  p{
     font-size: 25px;
     text-align: center;
+    color: #2da6bb;
   }
 }
 input[type="radio"]{

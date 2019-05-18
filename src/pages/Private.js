@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-
-
 import axios from 'axios';
 import { withAuth } from "../lib/AuthProvider";
-////import SearchPage from './SearchPage';
-//import Storage from './Storage';
 import {Switch} from 'react-router-dom';
-//import RecipeDetails from "./RecipeDetails";
 import Dashboard from './Dashboard';
-//import PrivateRoute from '../components/PrivateRoute';
-//import Favorites from './Favorites';
-//import PrivateNavbar from "../components/PrivateNavbar";
 
 class Private extends Component {
   constructor(props){
@@ -27,6 +19,7 @@ class Private extends Component {
       baseURL:'http://localhost:5000',
       withCredentials: true
     });
+    this.favTest = this.props.favTest
   }
  
    async componentDidMount(){
@@ -41,14 +34,8 @@ class Private extends Component {
       };
       let a = randomNumber(0,50);
       let b = randomNumber(60,100);
-      
-      
     
-      
       const {ingPreference} =this.state;
-      //const {favorites} =this.state
-      console.log(edaId);
-      console.log(ingPreference);
       const response = await axios.get(`https://api.edamam.com/search?q=${ingPreference}&app_id=${edaId}&app_key=${edaKey}&from=${a}&to=${b}`)
       if(this._isMounted){
         this.setState({
@@ -59,8 +46,6 @@ class Private extends Component {
     } 
 
     
-    
-
    getData = (val) => { 
      const {favoriteId} = val
      this.setState({
@@ -68,13 +53,21 @@ class Private extends Component {
      })
      console.log(this.state.favoriteId)
      console.log(this.props)
-     
+   }
+   newf = (val)=>{
+     console.log('ok',val);
+     //console.log(this.state.favoriteId)
+     this.setState({
+       favoriteId: val
+     })
    }
 
 
 
   render(){
-  console.log(this.props)
+  //console.log(this.props)
+  //console.log('fav',this.state.favoriteId)
+ // console.log(this.props)
   
     return(
       <div>
@@ -83,7 +76,7 @@ class Private extends Component {
        {/*  <h2> private </h2> */}
         
         <Switch>
-        <Dashboard recipes={this.state.recipes} status={this.state.status} sendData={this.getData}/>
+        <Dashboard recipes={this.state.recipes} status={this.state.status} sendData={this.getData} testD={this.newf}/>
         
         
         </Switch>     

@@ -17,8 +17,10 @@ export const withAuth = Comp => {
                 user={authStore.user}
                 logout={authStore.logout}
                 isLoggedin={authStore.isLoggedin}
-                favoriteId={authStore.favoriteId}
+                favTest={authStore.favorite}
+                favNumber = {authStore.fav}
                 getData={authStore.update}
+                messageError={authStore.message}
                 {...this.props}
               />
             );
@@ -35,6 +37,8 @@ class AuthProvider extends Component {
     user: null,
     isLoading: true,
     favoriteId:[],
+    fav:[],
+    message:false
   };
 
 
@@ -56,6 +60,22 @@ class AuthProvider extends Component {
           isLoading: false
         });
       });
+  }
+  favorite = ()=>{
+    console.log('favorito contexto')
+    auth
+    .fav()
+    .then(resp =>{
+      console.log('result backend',resp)
+       this.setState({
+        fav:resp
+      })
+    })
+    .catch(({response:{data:error}}) => {
+      this.setState({
+        message:error.statusMessage
+      })
+    })
   }
 
   update = () => {
@@ -107,9 +127,10 @@ class AuthProvider extends Component {
           user
         });
       })
-      .catch(({response:{data:error}}) => {
+      .catch((err) => {
+        console.log(err)
         this.setState({
-          message:error.statusMessage
+          message:err
         })
       });
   };
@@ -127,7 +148,7 @@ class AuthProvider extends Component {
   }; 
 
   render() {
-    const { isLoading, isLoggedin, user } = this.state;
+    const { isLoading, isLoggedin, user, fav, message } = this.state;
    // console.log(this.props)
     //console.log(user);
     return isLoading ? (
@@ -140,8 +161,11 @@ class AuthProvider extends Component {
           login: this.login,
           logout: this.logout,
           signup: this.signup,
-          favoriteId:this.test,
-          update: this.update
+          favorite:this.favorite,
+          favNumber: fav,
+          update: this.update,
+          messageError:message
+          //or messageError:this.state.message
         }}
       >
         {this.props.children}

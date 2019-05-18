@@ -11,8 +11,8 @@ import spinner from '../image/Rolling-1s-200px.gif'
 //import { FoodConsumer } from '../lib/FoodContext';
 
 class Dashboard extends Component{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state ={
       recipes:[] ,
       status: '',
@@ -26,6 +26,19 @@ class Dashboard extends Component{
     });
 
   }
+  componentDidMount(){
+    this.getFav()
+  }
+
+
+  getFav(){
+    this.server('/food/favorite')
+    .then(result =>{
+      this.setState({
+        favoriteId: result.data
+      })
+    })
+  }
   
   clickHandler(recipe){
     let newItem = recipe;
@@ -34,30 +47,23 @@ class Dashboard extends Component{
     console.log(recipe);
     favCopy.push(newItem);
     console.log(favCopy)
-    const favoriteId = favCopy;
-    console.log(favoriteId)
+    const favoriteId = recipe;
+    //console.log(favoriteId)
     /* this.setState({
       favoriteId: favCopy
     }) */
    this.server.put('/food/favorite', {favoriteId})
    .then(response =>{
-     console.log(response.data)
-   })
+     console.log(response.data) // olhar porque nao devolve o  archivo atualizado
+    this.setState({
+      favoriteId: response.data
+    })
+    this.props.testD(response.data)
+    })
    .catch(error =>{
      console.log(error)
    })
   } 
-
-   handleFormSubmit = event => {
-     event.preventDefault();
-    // console.log('test');
-     const {favoriteId} =this.state;
-     console.log(favoriteId);  
-     this.props.sendData({favoriteId})
-   }
-   clickHandlerFav(event){
-     console.log(event);
-   }
  
   render () {
     const { recipes, status} = this.props;

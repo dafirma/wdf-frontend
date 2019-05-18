@@ -27,24 +27,26 @@ class Auth {
   }
 
   me() {
-    return this.auth.get("/auth/me").then(response => response.data);
+    return this.auth.get("/auth/me")
+    .then(response =>{
+      console.log(response)
+      return response.data
+    } )
+      
+    
+  }
+
+  fav(){
+    return this.auth.get("/food/favorite")
+    .then(response => response.data)
+ 
   }
 
   sendToApp(val){
     const {favorites} =val
     console.log(favorites);
   }
-  /*
-  favPost(user){
-    const {username, favorite} = user;
-    return this.auth
-    .put("", {username,favorte})
-    .then(({ data } => data));
-  }
-  favGet(){
-      return this.auth.get("").then(response =>response.data);
-  }
-  */
+  
 }
 
 const auth = new Auth();

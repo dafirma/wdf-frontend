@@ -36,13 +36,14 @@ class Favorites extends Component {
     
   } 
   setFav(){
-    const res = this.server.get('/food/favorite')
+    this.server.get('/food/favorite')
    .then(result =>{
-    // console.log(result)
-     this.setState({
+    console.log(result)
+      this.setState({
        favoriteId:result.data
      })
    })
+   this.getData()
   }
 
 
