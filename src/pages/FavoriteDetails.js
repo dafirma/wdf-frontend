@@ -10,10 +10,10 @@ const FavoriteDetails=(props) =>{
   //const id = props.match.params.id;
   const recipe = props.location.state;
   //console.log(id);
-  console.log(recipe.recipe.uri);
+  /* console.log(recipe.recipe.uri);
   console.log(props.location);
   console.log('hola');
-  
+   */
 
   return(
     <div className='container-details'>

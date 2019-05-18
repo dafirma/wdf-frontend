@@ -29,7 +29,7 @@ class Auth {
   me() {
     return this.auth.get("/auth/me")
     .then(response =>{
-      console.log(response)
+     // console.log(response)
       return response.data
     } )
       
@@ -43,8 +43,8 @@ class Auth {
   }
 
   sendToApp(val){
-    const {favorites} =val
-    console.log(favorites);
+   // const {favorites} =val
+    //console.log(favorites);
   }
   
 }

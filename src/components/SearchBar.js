@@ -35,14 +35,14 @@ class SearchBar extends Component {
   onFormSubmit = e => {
     e.preventDefault();
     if(this.state.termIng === ''|| this.state.termTime ==='' || this.state.termCaloriesFrom ===''|| this.state.termCaloriesTo ==='' || this.state.termHealth ===''){
-      console.log('antes',this.state.searchError)
+      //console.log('antes',this.state.searchError)
       this.setState({
         searchError: true
       })
     } 
     
-    console.log(this.state.searchError)
-    console.log(this.state)
+    //console.log(this.state.searchError)
+    //console.log(this.state)
    this.props.onTermSubmit(this.state);
    // this.props.onTermSubmit(this.state.term);
   };

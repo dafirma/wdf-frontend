@@ -5,8 +5,8 @@ const Item = props => {
   //console.log(props)
   return(
     <li>
-             {props.title}  - {props.quantity} 
-       <button onClick={() => props.deleteFood(props)} className="button-info"> Delete</button>
+             {props.title} - {props.quantity} <span>Qnt</span>
+       <button onClick={() => props.deleteFood(props.title)} className="button-info"> Delete</button>
       </li>
   )
 }

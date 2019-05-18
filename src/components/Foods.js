@@ -13,7 +13,7 @@ class Food extends Component {
     let newFood=[...this.state.foods] 
   }
   render() {
-    console.log(foods)
+    //console.log(foods)
     return(
       <div>
         <button onClick={this.addFood}>add food</button>

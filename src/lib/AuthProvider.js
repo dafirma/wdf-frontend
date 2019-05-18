@@ -62,11 +62,11 @@ class AuthProvider extends Component {
       });
   }
   favorite = ()=>{
-    console.log('favorito contexto')
+   // console.log('favorito contexto')
     auth
     .fav()
     .then(resp =>{
-      console.log('result backend',resp)
+     // console.log('result backend',resp)
        this.setState({
         fav:resp
       })
@@ -79,11 +79,11 @@ class AuthProvider extends Component {
   }
 
   update = () => {
-    console.log('estoy actualizando!!')
+   // console.log('estoy actualizando!!')
         auth
       .me()
       .then(user => {
-        console.log(user)
+        //console.log(user)
         this.setState({
           isLoggedin: true,
           user,
@@ -128,7 +128,7 @@ class AuthProvider extends Component {
         });
       })
       .catch((err) => {
-        console.log(err)
+       // console.log(err)
         this.setState({
           message:err
         })

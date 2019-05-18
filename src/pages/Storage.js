@@ -17,7 +17,7 @@ class Storage extends Component {
   
     }
     this.server = axios.create({
-      baseURL:'http://localhost:5000',
+      baseURL:process.env.REACT_APP_FIREBASE,
       withCredentials: true
     });
   }
@@ -28,24 +28,23 @@ class Storage extends Component {
   addFood = theFood => {
     const foodsCopy = [...this.state.foods]
     foodsCopy.push(theFood)
-    console.log(foodsCopy)
+   // console.log(foodsCopy)
     this.setState({
         foods: foodsCopy
     })
   }
 
-  deleteFood = food => {
+  deleteFood = (food) => {
     //const foodsCopy = [...this.state.foods]
     const menuCopy = [...this.state.menu]
-    console.log(food);
-    console.log(menuCopy)
-   /*  menuCopy.forEach(elem =>{
-      if(elem.name === food.name){
-        let temp = parseInt(elem.quantity) - parseInt(food.quantity);
-        console.log(temp)
-        elem.quantity = temp
-      }
-    }) */
+    //console.log(food);
+    //console.log(menuCopy)
+    let index = menuCopy.findIndex(elem => elem.title === food)
+    //console.log(index)
+    menuCopy.splice(index,1)
+    this.setState({
+      menu:menuCopy
+    })
   
     
     
@@ -63,26 +62,19 @@ class Storage extends Component {
         menu: menuCopy
     }) */
   }
-
-  /* addMenu = plusFood =>{
-    console.log(plusFood.quantity)
-    const foodsCopy = [...this.state.foods#2da6bb#2da6bb]
-    console.log(foodsCopy.quantity)
-  } */
+    
 
   addMenu = tempFood =>{
-    console.log(tempFood);
+   // console.log(tempFood);
     let menuCopy = [...this.state.menu];
     let exists = false;
     let food = tempFood;
     menuCopy.forEach(elem =>{
       if(elem.title === food.title){
-
         let temp = parseInt(elem.quantity) + parseInt(food.quantity);
-        console.log(temp)
+       // console.log(temp)
         elem.quantity = temp
         food.quantity = temp;
-       // elem.quantity += food.quantity;
         exists = true;
       }
     })
@@ -100,24 +92,66 @@ class Storage extends Component {
       }) */
     })
     .catch(error =>{
-      console.log(error)
+     // console.log(error)
     })
 
    // const menu = menuCopy;
-    console.log(food.quantity)
-    console.log('atualizado:',food.quantity)
+    //console.log(food.quantity)
+   // console.log('atualizado:',food.quantity)
     //this.setStorage()
   }
     setStorage(){
     this.server.get('/food/storage')
     .then(result =>{
-      console.log(result.data.storage)
+     // console.log(result.data.storage)
        this.setState({
          menu:result.data.storage
        }) 
      })
   } 
-//olhar porque nao devolve a array atualizada do backend em funcao das cookies
+
+  deleteMenu = delFood =>{
+   // console.log(delFood)
+    let menuCopy = [...this.state.menu];
+    let exists = false;
+    let food = delFood;
+    menuCopy.forEach(elem =>{
+      if(elem.title === food.title){
+        let temp = parseInt(elem.quantity) - parseInt(food.quantity);
+       //// console.log(temp)
+        elem.quantity = temp
+        food.quantity = temp;
+        exists = true;
+        if(food.quantity <= 0){
+          menuCopy.splice(elem, 1)
+         // console.log('del', menuCopy)
+         // console.log(elem)
+        }
+      }
+    })
+    if(!exists){
+      menuCopy.push(food)
+    }
+    this.setState({
+      menu:menuCopy
+    })
+    this.server.put(`/food/storage/new`, {food})
+    .then(response =>{
+      //console.log(response.data.storage)
+      /* this.setState({
+        menu: response.data.storage
+      }) */
+    })
+    .catch(error =>{
+      //console.log(error)
+    })
+
+   // const menu = menuCopy;
+    //console.log(food.quantity)
+    //console.log('atualizado:',food.quantity)
+    //this.setStorage()
+  }
+
 
   render(){
     let foodList = [...this.state.foods];
@@ -125,7 +159,7 @@ class Storage extends Component {
     return(
       <div className='container-storage'>
         <h2>STORAGE</h2>
-        <AddFood addFood={this.addFood}/>
+        <AddFood addFood={this.addFood} />
         <div className="container-food">
           <div className="food-list">
           <hr/>
@@ -134,11 +168,11 @@ class Storage extends Component {
           </div>
           <hr/>
             {foodList.map ((food, index) => 
-            { return <FoodBox  key= {index} {...food} addMenu= {this.addMenu}/>})}
+            { return <FoodBox  key= {index} {...food} addMenu= {this.addMenu} deleteMenu={this.deleteMenu}/>})}
               <div className='container-edit'>
             <ul>
            {this.state.menu.map((food, index) => {
-             return <Item key={index} {...food} deleteFood={this.deleteFood}/>})}
+             return <Item key={index} {...food} {...index} deleteFood={this.deleteFood}/>})}
           </ul>
 
               </div>

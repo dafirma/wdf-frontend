@@ -16,7 +16,7 @@ class Private extends Component {
     }
     this.getData = this.getData.bind(this);
     this.server = axios.create({
-      baseURL:'http://localhost:5000',
+      baseURL:process.env.REACT_APP_FIREBASE,
       withCredentials: true
     });
     this.favTest = this.props.favTest
@@ -51,8 +51,8 @@ class Private extends Component {
      this.setState({
        favoriteId: [favoriteId]
      })
-     console.log(this.state.favoriteId)
-     console.log(this.props)
+    // console.log(this.state.favoriteId)
+    // console.log(this.props)
    }
    newf = (val)=>{
      console.log('ok',val);

@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 class Favorites extends Component {
   constructor(props){
     super(props);
-    console.log('props fav: ', props)
+    //console.log('props fav: ', props)
     this.getData = this.props.getData
     this.state ={
       recipes:[],
@@ -17,7 +17,7 @@ class Favorites extends Component {
     }
     
     this.server = axios.create({
-      baseURL:'http://localhost:5000',
+      baseURL:process.env.REACT_APP_FIREBASE,
       //process.env.REACT_APP_FIREBASE
       withCredentials: true
     });
@@ -38,7 +38,7 @@ class Favorites extends Component {
   setFav(){
     this.server.get('/food/favorite')
    .then(result =>{
-    console.log(result)
+    //console.log(result)
       this.setState({
        favoriteId:result.data
      })
@@ -50,7 +50,7 @@ class Favorites extends Component {
   clickDelete = (val, i) => {
     let index = i;
     let favoriteId = val;
-    console.log(index, favoriteId);
+    //console.log(index, favoriteId);
     this.server.post('/food/favorite',{favoriteId})
     //this.getData();
 
@@ -65,7 +65,7 @@ class Favorites extends Component {
 
   render(){
     const {favoriteId} = this.state;
-    console.log(favoriteId);
+    //console.log(favoriteId);
     //const test = this.props
     /* console.log(this.getData)
     console.log('session:',this.props.user)

@@ -60,3 +60,26 @@ form{
 ul {
   margin-bottom: 10px;
 }
+.container-text-add-food {
+  display: flex;
+  width:81%;
+  padding-right: 10%;
+  input{
+    width: 100%
+  }
+}
+.btn-add-food{
+  padding: 15px 10px 15px 10px;
+  span{
+    font-size: 20px;
+  }
+}
+.form-add-food{
+  display: flex;
+}
+.container-btn-addfood{
+  padding-left: 10%;
+}
+.container-box-add-food{
+  padding-bottom:5%;
+}

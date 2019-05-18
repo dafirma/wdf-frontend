@@ -40,7 +40,7 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     const {formErrors} = this.state;
-    console.log(this.props)
+   // console.log(this.props)
     
     //{console.log(this.props.user)}
 

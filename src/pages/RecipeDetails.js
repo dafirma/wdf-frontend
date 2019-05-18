@@ -10,8 +10,8 @@ const RecipeDetails =(props) =>{
   //const id = props.match.params.id;
   const {recipe} = props.location.state;
   //console.log(id);
-  console.log(recipe);
-  console.log(props.location);
+  //console.log(recipe);
+  //console.log(props.location);
   
 
   return(

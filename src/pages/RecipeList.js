@@ -13,7 +13,7 @@ class RecipeList extends Component {
         favoriteId:[]
     }
     this.server = axios.create({
-      baseURL:'http://localhost:5000',
+      baseURL: process.env.REACT_APP_FIREBASE,
       withCredentials: true
     });
 
@@ -21,25 +21,25 @@ class RecipeList extends Component {
   
   clickHandler(recipe, index){
     let newItem = recipe;
-    let a = index;
-    console.log(a);
+    //let a = index;
+    //console.log(a);
     let favCopy = [...this.state.favoriteId];
     favCopy.push(newItem);
-    console.log(favCopy)
+    //console.log(favCopy)
     const favoriteId = favCopy;
     this.server.put('/food/favorite',{favoriteId})
     .then(response =>{
-      console.log(response)
+      //console.log(response)
     })
     .catch(error =>{
-      console.log(error)
+      //console.log(error)
     })
   }
 
   handleFormSubmit = event =>{
     event.preventDefault();
-    const { favoriteId } = this.state;
-    console.log(favoriteId);
+   // const { favoriteId } = this.state;
+    //console.log(favoriteId);
     
   }
   
@@ -48,8 +48,8 @@ class RecipeList extends Component {
     const { recipes, status} = this.props; 
     //const { status } =this.state;
     let sizeObj = Object.keys(recipes).length;
-    console.log(sizeObj);
-    console.log(recipes);
+    //console.log(sizeObj);
+    //console.log(recipes);
   
     if(sizeObj === 3 ){
       return(

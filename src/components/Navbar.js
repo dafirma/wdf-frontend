@@ -20,7 +20,8 @@ class Navbar extends Component {
 
     }
     this.server = axios.create({
-      baseURL:'http://localhost:5000',
+      //baseURL:'http://localhost:5000',
+      baseURL:process.env.REACT_APP_FIREBASE,
       withCredentials: true
     });
   }
@@ -45,9 +46,9 @@ class Navbar extends Component {
 
   render() {
     const { user,logout, isLoggedin } = this.props;
-    const{ novo } = this.props
-    const favCounter =this.state.favoriteId
-    console.log(favCounter.length)
+    //const{ novo } = this.props
+   // const favCounter =this.state.favoriteId
+    //console.log(favCounter.length)
    // console.log(favCounter.length)
    // console.log(user)
     //console.log(this.props.favTest)

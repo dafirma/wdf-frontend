@@ -21,7 +21,7 @@ class Dashboard extends Component{
       favCounter:0
     }
     this.server = axios.create({
-      baseURL:'http://localhost:5000',
+      baseURL:process.env.REACT_APP_FIREBASE,
       withCredentials: true
     });
 
@@ -42,11 +42,11 @@ class Dashboard extends Component{
   
   clickHandler(recipe){
     let newItem = recipe;
-    console.log('before:', this.props.user.favorites)
+    //console.log('before:', this.props.user.favorites)
     let favCopy = [...this.state.favoriteId];
-    console.log(recipe);
+    //console.log(recipe);
     favCopy.push(newItem);
-    console.log(favCopy)
+   // console.log(favCopy)
     const favoriteId = recipe;
     //console.log(favoriteId)
     /* this.setState({
@@ -54,20 +54,20 @@ class Dashboard extends Component{
     }) */
    this.server.put('/food/favorite', {favoriteId})
    .then(response =>{
-     console.log(response.data) // olhar porque nao devolve o  archivo atualizado
+     //console.log(response.data) // olhar porque nao devolve o  archivo atualizado
     this.setState({
       favoriteId: response.data
     })
     this.props.testD(response.data)
     })
    .catch(error =>{
-     console.log(error)
+    // console.log(error)
    })
   } 
  
   render () {
     const { recipes, status} = this.props;
-    console.log(status)
+   // console.log(status)
     switch(status){
       case 'isLoading':
       return (
