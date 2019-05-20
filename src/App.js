@@ -56,7 +56,7 @@ class App extends Component {
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/Login" component={Login} />
-            <PrivateRoute path exact ='/'component={Login}/>
+            <PrivateRoute path exact ='/private'component={Private}/>
             <PrivateRoute path="/private" component={Private} sendToApp={this.getDataForPrivateFavorites} />
             <PrivateRoute path ='/storage' component={Storage}/>
             <PrivateRoute path  ='/search' component={SearchPage}/>

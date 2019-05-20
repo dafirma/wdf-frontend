@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
 import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../stylesheets/Cards.scss'
+import '../stylesheets/Cards.scss';
+
+import { animateScroll as scroll, scroller } from 'react-scroll'
+
 class RecipeList extends Component {
   constructor(props){
     super(props);
@@ -42,6 +44,14 @@ class RecipeList extends Component {
     //console.log(favoriteId);
     
   }
+
+  scrollTo() {
+    scroller.scrollTo('scroll-to-element', {
+      duration: 800,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    })
+  }
   
 
   render(){
@@ -77,7 +87,7 @@ class RecipeList extends Component {
         return ''
         case 'isLoaded':
           return(
-        <div className='container-list-search'>
+        <div className='container-list-search' test={scroll.scrollToBottom(1200)}>
          {recipes.map((recipe,index)=>
       <div key={index} className='container-food'>
       <div className='container-image'>
@@ -85,8 +95,6 @@ class RecipeList extends Component {
 
       </div>
         <p className='recipe-title'>{recipe.recipe.label}</p>
-        
-        {/* <p>{recipe.RecipeID}</p> */}
         <div className='container-icon-card'>
         <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
         <p><span>{recipe.recipe.ingredientLines.length} </span>Ingredients</p>

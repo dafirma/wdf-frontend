@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../stylesheets/Search.scss'
+import '../stylesheets/Search.scss';
 
 class SearchBar extends Component {
   constructor(props){
@@ -11,7 +11,8 @@ class SearchBar extends Component {
       termCaloriesFrom:'',
       termCaloriesTo:'',
       searchError:false,
-    shown: true,
+      shown: true,
+      newPosition:false
    };
 
   // console.log(this.recipes);
@@ -36,7 +37,8 @@ class SearchBar extends Component {
     if(this.state.termIng === ''|| this.state.termTime ==='' || this.state.termCaloriesFrom ===''|| this.state.termCaloriesTo ==='' || this.state.termHealth ===''){
       //console.log('antes',this.state.searchError)
       this.setState({
-        searchError: true
+        searchError: true,
+        newPosition:true
       })
     } 
     
@@ -45,8 +47,9 @@ class SearchBar extends Component {
    this.props.onTermSubmit(this.state);
    // this.props.onTermSubmit(this.state.term);
   };
+ 
 
-
+ 
   render() {
     //const {recipes} = this.state;
     //console.log(recipes);
@@ -153,7 +156,8 @@ class SearchBar extends Component {
           />
           </div> 
           <div className='container-btn-search'>
-            <button className='btn-search'type='submit'><p> Search</p></button>
+          
+              <button className='btn-search'type='submit' ><p> Search</p></button>
           </div>
         </div>
         </form>

@@ -28,7 +28,7 @@
   font-size: 20px;
   p{
     text-align: center;
-    padding: 0 3% 2% 1%;
+    padding: 0 3% 2% 2%;
   }
 }
 .recipe-title{
@@ -76,7 +76,8 @@ span {
 }
 .container-icon-card-dasboard{
   display: flex;
-  padding: 1% 0% 2% 3%;
+  padding: 1rem 2rem 1 2rem;
+  justify-content: space-between;
   //width: 98%;
   span {
     font-size: 25px;

@@ -34,53 +34,32 @@ class Navbar extends Component {
       getFav(){
         this.server.get('/food/favorite')
         .then(result =>{
-         // console.log(result.data)
           this.setState({
             favoriteId:result.data
           })
-          //console.log(this.state.favoriteId)
         })
         this.getData()
         this.favTest()
       }
 
   render() {
-    const { user,logout, isLoggedin } = this.props;
-    //const{ novo } = this.props
-   // const favCounter =this.state.favoriteId
-    //console.log(favCounter.length)
-   // console.log(favCounter.length)
-   // console.log(user)
-    //console.log(this.props.favTest)
-    //console.log(this.getFav)
-    //console.log(this.props.getData)
+    const { logout, isLoggedin } = this.props;
+    
     return (
-      <div /* className='Login' */>
+      <div>
       {isLoggedin && (
-      <div className='navigation'/* className='container-login' */>
+      <div className='navigation'>
           <>
-           {/*  <p>username: {user.username}</p> */}
             <ul>
               <li><Link to='/private'><img src={home} alt='home' width='50%'/></Link></li>
               <li><Link to='/storage'><img src={storage} alt='storage' width='50%'/></Link></li>
               <li><Link to='/search'><img src={search} alt='search' width='50%'/></Link></li>
               <li><Link to='/favorites'><img src={favorite} alt='favorite' width='50%'/></Link></li>
               <li><Link to='/' onClick={logout}><img src={logoutIcon} alt='logout' width='50%'/></Link></li>
-            {/* <li><Link to='/test'>test</Link></li>  */}
             </ul> 
-
-           
-            
           </>
         ) : (
           <div className = 'link-signup-login'>
-
-          <ul>
-          {/* <li> <Link to="/login">Login</Link></li>  */}
-           {/* <li> <Link to="/signup">SignUp</Link></li> */}
-            
-          </ul>
-            
           </div>
       </div>
         )}
@@ -92,20 +71,3 @@ class Navbar extends Component {
 }
 
 export default withAuth(Navbar);
-
-
-// eslint-disable-next-line no-lone-blocks
-{/* <div>
-<ul>
-  <FoodConsumer>
-  <li><Link to='/private'>Home</Link></li>
-  <li><Link to='/storage'>Storage</Link></li>
-  <li><Link to='/search'>Search</Link></li>
-  {({favorites}) =>
-  <li><Link to='/favorites'>Favorites {favorites}</Link></li>}
-  <li><Link to='/test'>Test</Link></li>
-  </FoodConsumer>
-</div>
-
-</ul> 
-*/}
