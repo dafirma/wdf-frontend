@@ -1,9 +1,18 @@
 .container-storage{
  // padding:23% 6% 0 2%;
- padding:10% 0% 0 5%;
+ padding:10% 0% 0% 0%;
  h2{
    text-align: center;
+   font-size: 25px;
  }
+ hr.style-five {
+  border: 0;
+  height: 0; /* Firefox... */
+  box-shadow: 0 0 10px 1px black;
+}
+hr.style-five:after {  /* Not really supposed to work, but does */
+  content: "\00a0";  /* Prevent margin collapse */
+}
 }
 .container-food-storage{
   padding:10 0%;
@@ -61,7 +70,7 @@ ul {
   margin-bottom: 10px;
 }
 .container-text-add-food {
-  display: flex;
+  //display: flex;
   width:81%;
   padding-right: 10%;
   input{
@@ -74,12 +83,191 @@ ul {
     font-size: 20px;
   }
 }
-.form-add-food{
+.form-addfood{
   display: flex;
+  input{
+    padding: 5% 11% 2% 5%;
+  border-bottom: lightgray solid 3px;
+  width: 85%;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.160784);
+  background-color: transparent;
+  border: grey solid 3px;
+  }
 }
 .container-btn-addfood{
   padding-left: 10%;
 }
 .container-box-add-food{
   padding-bottom:5%;
+}
+
+.container-foodbox-item{
+  display: flex;
+}
+.container-edit{
+  display:block;
+  //padding-left:25%; 
+  ul{
+    //padding-left: 10%;
+  }
+}
+
+
+
+/////////////
+.add-food {
+  //margin-top:12%;
+  max-width: 100%;
+  padding: 1% 0 0% 0;
+  label{
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+    padding: 3% 0% 2% 0%;
+  }
+  h3{
+    font-weight: lighter;
+  }
+  input[type="radio"]{
+    height: 2rem;
+  }
+
+}
+
+.ui-form-add-food{
+  display:flex;
+  padding-top:2%;
+}
+.container-input-add-food{
+  padding-bottom: 20%;
+  input{
+    background-color: #c8cbce63;
+    //height: 10%;
+  }
+  label{
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.container-child-add-food{
+  input {
+    height: 10%;
+  }
+}
+
+.search-bar-add-food{
+ width: 80%; 
+
+}
+
+.centerInput-add-food{
+  padding-right: 10%;
+  border:none;
+}
+
+.container-unity{
+  display: flex;
+  justify-content: center;
+  padding:10% 0% 0% 0%;
+  input{
+    border:none;
+  }
+  hr{
+    border:none;
+    height: 20px;
+     width: 90%;
+    height: 50px;
+    margin-top: 0;
+    border-bottom: 1px solid #1f1209;
+    box-shadow: 0 20px 20px -20px #333;
+    margin: -50px auto 10px; 
+  }
+  
+  label {
+    display: block;
+    color: #7d7d7d;
+  }
+  
+  .floatBlock-add-food {
+    margin: 0 1.81em 0 0;
+  }
+  
+  .labelish {
+    color:#7d7d7d;
+    margin: 0;
+  }
+  
+  .unityOptions {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    break-before: always;
+    margin: 0 0 1% 0;
+  }
+  .timeOptions{
+      border: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      break-before: always;
+      margin: 0 0 3em 0;
+  }
+  
+  #purchaseOrder {
+    margin: 0 0 2em 0;
+  }
+}
+.container-btn-plus-food{
+  padding:1rem 2rem 1rem 5.2rem;
+  p{
+    font-size: 1.2rem;
+    text-align: center;
+    color: #2da6bb;
+  }
+}
+
+.btn-plus-food{
+  padding: 0.8rem 1.3rem 0.8rem 1.3rem;
+  border-radius: 0.25rem;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
+}
+
+
+.container-options-addfood{
+  display: flex;
+}
+.form-addfood{
+  padding-left: 14%;
+}
+
+.food-list{
+  padding-bottom: 20%;
+  display: flex;
+}
+.container-foodbox{
+  display: flex;
+  flex-direction: column;
+  padding: 3% 0 1% 4%;
+}
+.food-list div{
+ // flex:1;
+}
+.container-item{
+  padding: 3% 0% 0% 6%;
+  ul{
+    padding-left: 10%;
+  }
+  li{
+    width: 150%;
+  }
+  h3{
+  padding-left:7rem;
+  }
 }

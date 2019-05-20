@@ -43,28 +43,33 @@ class Favorites extends Component {
        favoriteId:result.data
      })
    })
-   this.getData()
+   //this.getData()
   }
 
 
   clickDelete = (val, i) => {
     let index = i;
     let favoriteId = val;
-    //console.log(index, favoriteId);
+    console.log(favoriteId.uri);
     this.server.post('/food/favorite',{favoriteId})
+    .then(resp =>{
+      console.log('resp',resp.data)
+    })
     //this.getData();
 
     let favCopy = [...this.state.favoriteId];
     favCopy.splice(index, 1)
-    /* this.setState({
+     this.setState({
       favoriteId: favCopy
-    })  */
-    this.setFav()
+    })   
+    //console.log(favCopy.length)
+    //this.setFav()
 
   }
 
   render(){
     const {favoriteId} = this.state;
+    console.log(favoriteId.length)
     //console.log(favoriteId);
     //const test = this.props
     /* console.log(this.getData)
@@ -83,8 +88,6 @@ class Favorites extends Component {
       <img src = {recipe.image} alt={recipe.label}/>          
       </div>
         <p className='recipe-title'>{recipe.label}</p>
-        <hr/>
-        {/* <p>{recipe.RecipeID}</p> */}
         <div className='container-icon-card'>
         <p><span>{recipe.totalTime}</span> Minutes</p>
         <p><span>{recipe.ingredientLines.length} </span>Ingredients</p>
@@ -97,9 +100,12 @@ class Favorites extends Component {
           <p key={indexHealth}><span>{cardHealth}</span>/</p>)}
           </div>
           <div className='container-btn-recipe'>
-          <Link to={{pathname:`/abc/${recipe}`, state:{recipe}}}><button className='btn-recipe'><span>Recipe</span></button></Link>
+          <Link to={{pathname:`/abc/${recipe.label}`, state:{recipe}}}><button className='btn-recipe'><span>Recipe</span></button></Link>
+          <div>
+          <button className='btn-delete-fav'onClick={() => this.clickDelete(recipe, index)}><span>Delete</span></button>
           </div>
-          </div>) : <div>nothing to see here</div>} 
+          </div>
+          </div>) : <div><h2>No favorites yet</h2></div>} 
       </div>
     )
   }
@@ -110,24 +116,3 @@ export default withAuth(Favorites);
 
 
 
-
-// componentDidMount(){
- /* this.server.get('/auth/me')
-  .then(response =>{
-    console.log(response.data)
-  })
-  .catch(error =>{
-    console.log(error)
-  })
-  const response = await this.server.get('/food/favorite')
-  console.log(response.data.favorites)
-  this.setState({
-    favoriteId: response.data.favorites
-  })
-  } 
-
-  */  // componentDidMount() {
-  //   this.setState({
-  //     favoriteId: this.props.user.favorites
-  //   })
-  // }

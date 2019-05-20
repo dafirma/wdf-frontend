@@ -88,7 +88,7 @@ class Dashboard extends Component{
           <p className='recipe-title'>{recipe.recipe.label}</p>
           {/* <hr/> */}
           {/* <p>{recipe.RecipeID}</p> */}
-          <div className='container-icon-card'>
+          <div className='container-icon-card-dasboard'>
           <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
           <p><span>{recipe.recipe.ingredientLines.length} </span>Ingredients</p>
           <p><span>{recipe.recipe.yield}</span> Servings</p>

@@ -64,7 +64,7 @@ class Navbar extends Component {
               <li><Link to='/private'><img src={home} alt='home' width='50%'/></Link></li>
               <li><Link to='/storage'><img src={storage} alt='storage' width='50%'/></Link></li>
               <li><Link to='/search'><img src={search} alt='search' width='50%'/></Link></li>
-              <li><Link to='/favorites'><img src={favorite} alt='favorite' width='50%'/><span>{user.favorites.length}</span></Link></li>
+              <li><Link to='/favorites'><img src={favorite} alt='favorite' width='50%'/></Link></li>
               <li><Link to='/' onClick={logout}><img src={logoutIcon} alt='logout' width='50%'/></Link></li>
             {/* <li><Link to='/test'>test</Link></li>  */}
             </ul> 

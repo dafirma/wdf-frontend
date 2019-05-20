@@ -5,7 +5,6 @@ import AddFood from '../components/AddFood';
 import Item from '../components/Item';
 import '../stylesheets/Storage.scss';
 import axios from 'axios';
-// import from db food storage ???
 
 class Storage extends Component {
   constructor(props){
@@ -65,7 +64,7 @@ class Storage extends Component {
     
 
   addMenu = tempFood =>{
-   // console.log(tempFood);
+    console.log(tempFood);
     let menuCopy = [...this.state.menu];
     let exists = false;
     let food = tempFood;
@@ -158,27 +157,26 @@ class Storage extends Component {
     //let newMenu = [...this.state.menu]
     return(
       <div className='container-storage'>
-        <h2>STORAGE</h2>
+        <h2>Storage</h2>
         <AddFood addFood={this.addFood} />
-        <div className="container-food">
+        <div className="container-food-storage">
+          <hr/>
           <div className="food-list">
-          <hr/>
-          <div>
-          {}
-          </div>
-          <hr/>
-            {foodList.map ((food, index) => 
-            { return <FoodBox  key= {index} {...food} addMenu= {this.addMenu} deleteMenu={this.deleteMenu}/>})}
-              <div className='container-edit'>
-            <ul>
-           {this.state.menu.map((food, index) => {
-             return <Item key={index} {...food} {...index} deleteFood={this.deleteFood}/>})}
-          </ul>
-
-              </div>
+            <div className='container-foodbox'>
+              {foodList.map ((food, index) => 
+                {return <FoodBox  key= {index} {...food} addMenu= {this.addMenu} deleteMenu={this.deleteMenu}/>})}
+            </div>
+            <div className='container-item'>
+              <ul>
+            {foodList &&
+            <h3>List</h3>}
+                {this.state.menu.map((food, index) => {
+                  return <Item key={index} {...food} {...index} deleteFood={this.deleteFood}/>})}
+              </ul>
+            </div>
           </div>
         </div>
-        </div>
+      </div>
     )
   }
 }

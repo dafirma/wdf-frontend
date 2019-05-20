@@ -52,7 +52,7 @@ class Login extends Component {
           <div className='container-logo'>
             <img src = {logo} alt='logo-wdf'/>
           </div> 
-          <form onSubmit={this.handleFormSubmit}>
+          <form className='form-login'onSubmit={this.handleFormSubmit}>
         <div className='container-main-input'>
         <div className='container-input-login'> 
         {formErrors && 

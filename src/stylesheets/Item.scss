@@ -1,6 +1,6 @@
 .container-box{
   //padding:10%;
-  display: flex;
+  width: 32%
 }
 .container-form{
   display: flex;
@@ -24,27 +24,48 @@
    padding: 5% 0% 0%  0%;
  }
  .btn-counter-plus{
-   padding:15px 30px 15px 30px;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  border-radius: 0.25rem;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
    span{
-     font-size: 25px;
+     font-size:1rem;
+     text-align: center;
    }
  }
 
  .btn-counter-minus{
-  padding:15px 30px 15px 30px;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  border-radius: 0.25rem;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
   span{
-    font-size: 25px;
+    font-size:1rem;
     text-align: center;
   }
 }
  .control{
    display: flex;
  }
- .container-btn-counter{
-   padding-right: 30%;
+ .container-btn-counter-plus{
+   padding-right: 15%;
  }
  li span{
    font-size:18px;
    color: black;
    padding-right: 5%;
+ }
+ .main-container-foodbox{
+   display: block;
+ }
+ .btn-delete-food{
+  padding: 0.1rem 0.4rem 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
+  span{
+    font-size: 0.8rem;
+    text-align: center;
+    color:#2da6bb;
+  }
  }

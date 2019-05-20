@@ -1,5 +1,4 @@
 .search {
-  //margin-top:12%;
   max-width: 100%;
   padding: 1% 0 0% 0;
   label{
@@ -7,21 +6,20 @@
   }
   form{
     width: 92%;
-   // background-color: black;
   }
   h2 {
     text-align: center;
     padding: 3% 0% 2% 0%;
+    font-size: 25px;
   }
   h3{
     font-weight: lighter;
+    padding-left: 7%
   }
   #search-bar{
-   // margin-bottom:20%;
     max-width: 100%;
   }
 }
-
 .container-searchPage{
   max-width: 100%;
   padding-bottom: 10%;
@@ -30,12 +28,12 @@
   display:flex;
   padding-top:2%;
 }
-/* .container-input{
-  display: flex;
-} */
+
 .btn-search{
-  //padding:2% 20% 2% 20%;
   padding: 2px 48px 2px 48px;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
+  border-radius: 0.25rem;
 }
 .container-time{
   display: flex;
@@ -44,31 +42,32 @@
     padding-right:10px; 
   }
 }
+
 .container-calories{
   display: flex;
-  padding-left: 4%;
+  padding: 2% 0% 1% 7%;
   padding-bottom: 8%;
   input{
-    height: 10%;
-    width: 16%;
+    width: 6.5rem;
     margin-right: 9%;
+    border-bottom: lightgray solid 3px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.160784);
+    background-color: transparent;
+    border: grey solid 3px;
+    padding: 4% 2% 1% 0%;
+    font-size: 1.1rem;
   }
   label{
     padding-right: 2%;
+    color:#7d7d7d;
   }
 }
 .container-health{
   display: flex;
   justify-content: center;
-  //padding-bottom:0 5% 10%;
-  // ul {
-  // list-style: none;
-  // margin: 0 0 20px;
-  // padding: 0;
-  // display: flex;
-  // li{
-  //   padding-right: 10%;
-  // }
+  
   label {
     display: block;
     color: #7d7d7d;
@@ -90,6 +89,7 @@
     justify-content: flex-start;
     break-before: always;
     margin: 0 0 1% 0;
+    padding-left: 7%;
   }
   .timeOptions{
       border: none;
@@ -108,25 +108,34 @@
 .centerInput{
   padding-right: 10%;
   border:none;
+  background-color: #c8cbce63;
+  border-bottom: lightgray solid 3px;
+  width: 85%;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.160784);
+  background-color: transparent;
+  border: grey solid 3px;
+  
 }
 .container-input-search{
   padding-bottom: 20%;
-  input{
-    background-color: #c8cbce63;
-    //height: 10%;
-  }
+  
   label{
     font-size: 20px;
     text-align: center;
   }
 }
+
+
 .container-child-searchbar{
+  padding-left: 7%;
   input {
     height: 10%;
   }
 }
 .container-btn-search{
-  padding:4% 0 0 26%;
+  padding:4% 0 0 32%;
   p{
     font-size: 25px;
     text-align: center;

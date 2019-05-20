@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../stylesheets/Search.scss'
-//import RecipeList from '../pages/RecipeList';
-//import axios from 'axios';
+
 class SearchBar extends Component {
   constructor(props){
     super(props);
@@ -20,7 +19,7 @@ class SearchBar extends Component {
   onInputChange = e => {
     let {name, value } =e.target;
     this.setState({ [name]: value });
-  
+    console.log(e.target.value)
     //this.checkState() 
    
   }
@@ -165,6 +164,3 @@ class SearchBar extends Component {
 }
 
 export default SearchBar;
-
-
-// <RecipeList recipes = {this.state.recipes}/>

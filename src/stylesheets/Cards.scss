@@ -11,7 +11,7 @@
   padding:6% 0% 0% 0%;
   h2{
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
   }
 
 }
@@ -32,7 +32,7 @@
   }
 }
 .recipe-title{
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 900;
 }
 .container-health-label{
@@ -59,6 +59,9 @@ img{
   box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.1607843137254902);
   margin-bottom:3%;
 }
+hr{
+  width: 50%;
+}
 }
 span {
   color: #2da6bb;
@@ -69,26 +72,28 @@ span {
   //width: 98%;
   span {
     font-size: 25px;
-
   }
-;}
-/* .container-btn-view-and-fav{
-  padding: 0 0 0 17%;
+}
+.container-icon-card-dasboard{
   display: flex;
-  justify-content: baseline;
-} */
+  padding: 1% 0% 2% 3%;
+  //width: 98%;
+  span {
+    font-size: 25px;
+  }
+}
+
+
 .btn-view-recipe{
   padding: 13% 11% 13% 15%;
-  //border:none;
-  //border-radius: 7px;
-  //background-color: #2da6bb;
-  //color: white;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
+  border-radius: 0.25rem;
   text-decoration: none;
- // list-style: none;
-  //width: 50%;
-  //padding-left: 50%;
   span{
-  font-size: 18px;
+  font-size: 1.3rem;
+  color: #2da6bb;
+
   }
   p{
     width: 60%;
@@ -105,11 +110,12 @@ span {
 }
 .btn-fav{
   padding: 11% 12% 11% 12%;
-  //border:none;
-  //border-radius: 7px;
-  //border: none;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
+  border-radius: 0.25rem;
   span{
-    font-size: 18px;
+    font-size:1.3rem;
+    color: #2da6bb;
   }
   img{
     width: 40%;
@@ -124,10 +130,30 @@ span {
 }
 .btn-recipe{
   padding: 2% 10% 2% 10%;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  span{
+    font-size:1.3rem;
+    color: #2da6bb;
+  }
+}
+.btn-delete-fav{
+  padding: 2% 10% 2% 10%;
+  border:solid 3px #2da6bb;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  span{
+    font-size:1.3rem;
+    color: #2da6bb;
+  }
+
 }
 
 .container-btn-recipe{
-  padding: 0% 0% 0% 30%;
+  padding: 0% 10% 0% 10%;
+  display: flex;
+  justify-content: space-between;
   span{
     font-size: 25px;
   }
@@ -138,7 +164,28 @@ span {
 }
 .btn-fav-list{
   padding: 11% 11% 11% 15%; 
+  border:solid 3px #2da6bb;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  text-decoration: none;
   span{
-    font-size: 18px;
+  font-size: 1.3rem;
+  color: #2da6bb;
+}
+}
+
+.container-btn-fav-dashboard{
+  padding: 0% 0% 0% 10%;
+  position: absolute;
+  top:62%;
+  left: 70%;
+  img{
+    width: 70%;
+    box-shadow: none;
   }
+}
+.btn-fav-dashboard{
+  padding-left: 10%;
+  background-color: transparent;
+  border:none;
 }

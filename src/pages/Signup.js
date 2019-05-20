@@ -35,12 +35,12 @@ class Signup extends Component {
     const {formErrors} =this.state;
     return (
       <div className='container-signup'>
-        <div className='container-logo'>
+        <div className='container-logo-signup'>
             <img src = {logo} alt='logo-wdf'/>
         </div> 
         {formErrors && 
         <div><h2>Error, fields empty!</h2></div> }
-        <form className='ui-form' onSubmit={this.handleFormSubmit}>
+        <form className='ui-form-signup' onSubmit={this.handleFormSubmit}>
           <div className='container-input-signup'>
             <div className='container-child-searchbar'>
               <div className='container-input-signup'>
@@ -77,7 +77,7 @@ class Signup extends Component {
               </div>
             </div>
           
-          <div >
+          <div className='container-btn-signup'>
             <button className='btn-signup'type='submit'><p>Signup</p></button>
           </div>
         </div>

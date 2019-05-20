@@ -13,6 +13,7 @@ class SearchPage extends Component {
       status: 'isLoading',
       statusRes:'',
     }
+    this.myRef = React.createRef()
   }
   onTermSubmit = async term =>{
     const item = term;
@@ -32,6 +33,7 @@ class SearchPage extends Component {
       })
     } else if( health.length > 0){
       const response = await axios.get (`https://api.edamam.com/search?q=${ingredient}&app_id=${edaId}&app_key=${edaKey}&health=${health}`)
+      window.scrollTo(0,1000)
       this.setState({
           recipes:response.data.hits,
           status: 'isLoaded',
@@ -96,11 +98,16 @@ class SearchPage extends Component {
     // }
 
    }
+   testStyle(){
+     this.myRef.current.scroll(0,100);
 
+   }
    
    render(){
      const condError = this.state.statusRes;
      const {recipes} = this.state;
+     console.log()
+    
      /* const scroll = {
        color:'green',
      }; */
@@ -111,8 +118,9 @@ class SearchPage extends Component {
           <h2> Not recipes found, try again</h2>
        </div>} 
          <SearchBar onTermSubmit={this.onTermSubmit}/>
-          { recipes ?
-        <div >
+          { recipes.length > 0 ?
+        <div>
+          jkhkjhk
           <RecipeList recipes={this.state.recipes} status={this.state.status} statusRes={this.state.statusRes}/>
         </div>: 
         <div>
