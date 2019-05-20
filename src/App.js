@@ -12,7 +12,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import AnonRoute from "./components/AnonRoute";
 import AuthProvider from "./lib/AuthProvider";
 import RecipeDetails from './pages/RecipeDetails';
-import TestDetails from "./pages/TestDetails";
 import FavoriteDetails from './pages/FavoriteDetails';
 import './stylesheets/App.scss'
 import Page404 from './components/Page404'
@@ -48,9 +47,8 @@ class App extends Component {
             <PrivateRoute path  ='/favorites' component={Favorites} manu={{manu: 'manu'}} favoriteId={this.state.favoriteId} getData={()=>this.getDataForPrivateFavorites} />
             <PrivateRoute path ='/fav' component={FavoriteDetails}/>
             <PrivateRoute path ='/recipe/:id' component={RecipeDetails}/>
-            <PrivateRoute path = '/test/:id' component={TestDetails} />
             <PrivateRoute component={Page404} />
-          </Switch>
+          </Switch> 
         </div>
       </AuthProvider>
     );
