@@ -44,7 +44,7 @@ class Storage extends Component {
     this.setState({
       menu:menuCopy
     })
-  
+    this.server.post('/food/storage',{food})
     
     
    /*  menuCopy.forEach(elem => {
@@ -134,7 +134,7 @@ class Storage extends Component {
     this.setState({
       menu:menuCopy
     })
-    this.server.put(`/food/storage/new`, {food})
+    this.server.post(`/food/storage`, {food})
     .then(response =>{
       //console.log(response.data.storage)
       /* this.setState({
@@ -154,7 +154,7 @@ class Storage extends Component {
 
   render(){
     let foodList = [...this.state.foods];
-    //let newMenu = [...this.state.menu]
+    //let newMenu = [...this.state.menu];
     return(
       <div className='container-storage'>
         <h2>Storage</h2>

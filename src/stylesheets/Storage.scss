@@ -16,6 +16,12 @@ hr.style-five:after {  /* Not really supposed to work, but does */
 }
 .container-food-storage{
   padding:10 0%;
+  hr{
+    width: 100%;
+    background-color: #F28705;
+    height: 0.5px;
+    border:none;
+    }
 }
 form{
   display: flex;

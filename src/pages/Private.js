@@ -51,12 +51,8 @@ class Private extends Component {
      this.setState({
        favoriteId: [favoriteId]
      })
-    // console.log(this.state.favoriteId)
-    // console.log(this.props)
    }
    newf = (val)=>{
-     console.log('ok',val);
-     //console.log(this.state.favoriteId)
      this.setState({
        favoriteId: val
      })
@@ -65,20 +61,10 @@ class Private extends Component {
 
 
   render(){
-  //console.log(this.props)
-  //console.log('fav',this.state.favoriteId)
- // console.log(this.props)
-  
     return(
       <div>
-   
-    
-       {/*  <h2> private </h2> */}
-        
         <Switch>
         <Dashboard recipes={this.state.recipes} status={this.state.status} sendData={this.getData} testD={this.newf}/>
-        
-        
         </Switch>     
         </div>
     )

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import '../stylesheets/Storage.scss'
-//import Item from '../components/Item'
-//import '../stylesheets/Item.scss'
+import '../stylesheets/Storage.scss';
 class AddFood extends Component {
   constructor(props){
     super(props);
@@ -14,9 +12,7 @@ class AddFood extends Component {
   }
   handleFormSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state)
     if(this.state.title ==='' || this.state.unity ===''){
-      console.log('empty')
       this.setState({
         formError: true
       })
@@ -24,18 +20,10 @@ class AddFood extends Component {
       this.props.addFood(this.state)
 
     }
-    
-/*    this.setState({
-        title: '',
-        quantity: '',
-        type:''
-    }) */
 }
 handleChange = event =>{
   let { name, value } = event.target;
-  console.log(event.target.value)
   this.setState({[name]: value});
- // console.log(name,value)
 }
 render()
   {
@@ -105,28 +93,4 @@ render()
   } 
 }
 
-
 export default AddFood;
-
-
-
-
-/* 
-<div className="container-box-add-food">
-<form className='form-add-food' onSubmit={this.handleFormSubmit}>
-  <div className='container-text-add-food'>
-    <label>Name: </label>
-    <input type="text" name="title" value={this.state.title} onChange={(event) => this.handleChange(event)} />
-  </div>
-  <div className='container-btn-addfood'>
-    <button className="btn-add-food" type="submit"><span>Add food</span></button>
-  </div>
-</form>
-</div> 
-
- <div className='container-btn-plus-food'>
-          <button className='btn-plus-food'type='submit'><p>Add Food</p></button>
-        </div>
-
-
-*/

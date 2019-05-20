@@ -3,7 +3,7 @@ import { withAuth } from '../lib/AuthProvider';
 import axios from 'axios';
 import '../stylesheets/Cards.scss';
 import {Link} from 'react-router-dom';
-
+import Notifications, {notify} from 'react-notify-toast'
 
 class Favorites extends Component {
   constructor(props){
@@ -18,19 +18,11 @@ class Favorites extends Component {
     
     this.server = axios.create({
       baseURL:process.env.REACT_APP_FIREBASE,
-      //process.env.REACT_APP_FIREBASE
       withCredentials: true
     });
   }
    
  componentDidMount(){
-    /* this.server.get('/food/favorite')
-   .then(result =>{
-    // console.log(result)
-     this.setState({
-       favoriteId:result.data
-     })
-   }) */
    this.setFav();
     
     
@@ -38,52 +30,37 @@ class Favorites extends Component {
   setFav(){
     this.server.get('/food/favorite')
    .then(result =>{
-    //console.log(result)
       this.setState({
        favoriteId:result.data
      })
    })
-   //this.getData()
   }
 
 
   clickDelete = (val, i) => {
     let index = i;
     let favoriteId = val;
-    console.log(favoriteId.uri);
+    let myColor ={ background:'#2DA6BB', text:'#FAFAFA', fontSize:'20px' }
+    notify.show('DELETED FAVORITE', "custom", 3000, myColor);
     this.server.post('/food/favorite',{favoriteId})
     .then(resp =>{
-      console.log('resp',resp.data)
     })
-    //this.getData();
-
     let favCopy = [...this.state.favoriteId];
     favCopy.splice(index, 1)
      this.setState({
       favoriteId: favCopy
     })   
-    //console.log(favCopy.length)
-    //this.setFav()
-
   }
 
   render(){
     const {favoriteId} = this.state;
-    console.log(favoriteId.length)
-    //console.log(favoriteId);
-    //const test = this.props
-    /* console.log(this.getData)
-    console.log('session:',this.props.user)
-    console.log(this.state.favoriteId)
-    console.log('favorites: ',this.state.favoriteId)
-    console.log(this.props.location) */
-
     return(
       <div className='container-favorite'>
         <h2>FAVORITES</h2>
           {favoriteId !== undefined ?
             favoriteId.map((recipe,index) => 
             <div key={index} className='container-food'>
+              <Notifications/>
       <div className='container-image'>
       <img src = {recipe.image} alt={recipe.label}/>          
       </div>
@@ -100,7 +77,7 @@ class Favorites extends Component {
           <p key={indexHealth}><span>{cardHealth}</span>/</p>)}
           </div>
           <div className='container-btn-recipe'>
-          <Link to={{pathname:`/abc/${recipe.label}`, state:{recipe}}}><button className='btn-recipe'><span>Recipe</span></button></Link>
+          <Link to={{pathname:`/fav/${recipe.label}`, state:{recipe}}}><button className='btn-recipe'><span>Recipe</span></button></Link>
           <div>
           <button className='btn-delete-fav'onClick={() => this.clickDelete(recipe, index)}><span>Delete</span></button>
           </div>
@@ -110,7 +87,6 @@ class Favorites extends Component {
     )
   }
 }
-
 export default withAuth(Favorites);
 
 

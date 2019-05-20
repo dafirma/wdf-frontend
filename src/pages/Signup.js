@@ -15,7 +15,6 @@ class Signup extends Component {
     event.preventDefault();
     const { username, password, preference } = this.state;
     if(username ==='' || password ==='' || preference=== ''){
-      //console.log('vazio')
       this.setState({
         formErrors: true
       })
@@ -93,48 +92,3 @@ class Signup extends Component {
 }
 
 export default withAuth(Signup);
-
-
-
-
-/* 
-
-
-<div className='container-form'>
-<form  className='ui-form-signup' onSubmit={this.handleFormSubmit}>
-  <div className='container-input-signup'>
-    
-    <input
-      type="text"
-      name="username"
-      placeholder='Username'
-      value={username}
-      className='centerInput'
-      onChange={this.handleChange}
-    />
-  </div>  
-  <div className='container-input-signup'> 
-    <input
-      type="password"
-      name="password"
-      value={password}
-      placeholder='Password'
-      className='centerInput'
-      onChange={this.handleChange}
-    />
-  </div>
-  <div className='container-input-signup'>
-    <input
-      type="text"
-      name="preference"
-      value={preference}
-      placeholder='Favorite food'
-      className='centerInput'
-      onChange={this.handleChange}
-    />
-  </div>  
-  <div className='container-btn-signup'>
-    <button className='btn-signup' type="submit"  ><span>Signup</span></button>
-  </div>
-</form>
-</div> */

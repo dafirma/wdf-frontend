@@ -1,7 +1,8 @@
 # Project Name
  WHAT DA FOOD
 ## Description
- WHAT DA FOOD is an app that help you to find recipes based on your food storage
+ WHAT DA FOOD 
+ is an app that help you to find recipes based on your food storage
 
 ## User Stories
 

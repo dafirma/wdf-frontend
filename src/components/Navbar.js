@@ -20,7 +20,6 @@ class Navbar extends Component {
 
     }
     this.server = axios.create({
-      //baseURL:'http://localhost:5000',
       baseURL:process.env.REACT_APP_FIREBASE,
       withCredentials: true
     });
@@ -29,8 +28,6 @@ class Navbar extends Component {
         this.getFav()
         
       }
-
-
       getFav(){
         this.server.get('/food/favorite')
         .then(result =>{
@@ -55,10 +52,9 @@ class Navbar extends Component {
               <li><Link to='/storage'><img src={storage} alt='storage' width='50%'/></Link></li>
               <li><Link to='/search'><img src={search} alt='search' width='50%'/></Link></li>
               <li><Link to='/favorites'><img src={favorite} alt='favorite' width='50%'/></Link></li>
-              <li><Link to='/' onClick={logout}><img src={logoutIcon} alt='logout' width='50%'/></Link></li>
+              <li><Link to='/logout' onClick={logout}><img src={logoutIcon} alt='logout' width='50%'/></Link></li>
             </ul> 
           </>
-        ) : (
           <div className = 'link-signup-login'>
           </div>
       </div>
@@ -66,7 +62,7 @@ class Navbar extends Component {
       
         
       </div>
-    );
+    )
   }
 }
 

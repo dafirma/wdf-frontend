@@ -22,7 +22,7 @@
 }
 .container-searchPage{
   max-width: 100%;
-  padding-bottom: 10%;
+  padding-bottom: 20%;
 }
 .ui-form{
   display:flex;
@@ -144,4 +144,12 @@
 }
 input[type="radio"]{
   height: 2rem;
+}
+.msg-error{
+  padding-top: 5%;
+  h2{
+    text-align: center;
+    font-size: 1.3rem;
+    color: #2da6bb;
+  }
 }
