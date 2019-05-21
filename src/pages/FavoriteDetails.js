@@ -1,33 +1,27 @@
 import React from 'react';
 import { withAuth } from '../lib/AuthProvider';
-import '../stylesheets/RecipeDetails.scss'
-//import favDetails from '../image/corazon-de-boton-de-favorito.png';
-
-
+import '../stylesheets/RecipeDetails.scss';
+import { Link } from 'react-router-dom';
+import back from '../image/flecha-hacia-la-izquierda.png'
 
 const FavoriteDetails=(props) =>{
-  //console.log(props)
-  //const id = props.match.params.id;
   const recipe = props.location.state;
-  //console.log(id);
-  /* console.log(recipe.recipe.uri);
-  console.log(props.location);
-  console.log('hola');
-   */
+  
 
   return(
     <div className='container-details'>
-      {/* <h2>Recipe Details</h2> */}
+      <div className='container-back-icon'>
+      
+      <Link to = {{pathname:`/private`}} ><span> <img src={back} alt='back'/>Back </span></Link>
+      </div>
       <h2>{recipe.recipe.label}</h2>
       <div className='container-image-details'>
         <img src = {recipe.recipe.image} alt={recipe.recipe.label}/>
-        <hr/>
       </div>
       <div className='container-icon-card-details'>
           <p><span>{recipe.recipe.totalTime}</span> Minutes</p>
           <p><span>{recipe.recipe.ingredientLines.length} </span>Ingredients</p>
           <p><span>{recipe.recipe.yield}</span> Servings</p>
-          {/* <p><span>{parseInt(recipe.calories)} </span> Kcal</p> */}
           
             </div>
           <h3>Health Labels</h3> 

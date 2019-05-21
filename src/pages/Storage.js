@@ -44,7 +44,7 @@ class Storage extends Component {
     this.setState({
       menu:menuCopy
     })
-    this.server.post('/food/storage',{food})
+  
     
     
    /*  menuCopy.forEach(elem => {
@@ -64,7 +64,7 @@ class Storage extends Component {
     
 
   addMenu = tempFood =>{
-    console.log(tempFood);
+   // console.log(tempFood);
     let menuCopy = [...this.state.menu];
     let exists = false;
     let food = tempFood;
@@ -80,29 +80,27 @@ class Storage extends Component {
     if(!exists){
       menuCopy.push(food)
     }
+    this.setState()
+    //console.log(menuCopy)
+    //console.log('food', food)
     this.setState({
       menu:menuCopy
     })
-    this.server.put(`/food/storage/new`, {food})
+   
+   this.server.put(`/food/storage/new`, {food})
     .then(response =>{
-      //console.log(response.data.storage)
-      /* this.setState({
-        menu: response.data.storage
-      }) */
+    //console.log(response.data.storage)
+     })
+     .catch(error =>{
+   // console.log(error)
     })
-    .catch(error =>{
-     // console.log(error)
-    })
-
-   // const menu = menuCopy;
-    //console.log(food.quantity)
-   // console.log('atualizado:',food.quantity)
-    //this.setStorage()
+    this.setStorage() 
   }
+
     setStorage(){
     this.server.get('/food/storage')
     .then(result =>{
-     // console.log(result.data.storage)
+     //console.log(result.data.storage)
        this.setState({
          menu:result.data.storage
        }) 
@@ -134,7 +132,7 @@ class Storage extends Component {
     this.setState({
       menu:menuCopy
     })
-    this.server.post(`/food/storage`, {food})
+    this.server.put(`/food/storage/new`, {food})
     .then(response =>{
       //console.log(response.data.storage)
       /* this.setState({
@@ -154,7 +152,7 @@ class Storage extends Component {
 
   render(){
     let foodList = [...this.state.foods];
-    //let newMenu = [...this.state.menu];
+    //let newMenu = [...this.state.menu]
     return(
       <div className='container-storage'>
         <h2>Storage</h2>

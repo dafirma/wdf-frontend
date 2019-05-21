@@ -5,7 +5,7 @@
   h2{
     text-align: center;
     padding-bottom: 5%;
-  
+    padding-left: 9%;
   }
   h3{
     text-align: center;
@@ -65,4 +65,18 @@
   padding-left: 10%;
   background-color: transparent;
   border:none;
+}
+.container-back-icon{
+  display: flex;
+  position: fixed;
+  img{
+    width: 20%;
+  }
+  span{
+    color: black;
+    
+  }
+  a{
+    text-decoration: none;
+  }
 }

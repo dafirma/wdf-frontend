@@ -33,7 +33,7 @@ class Private extends Component {
       
       };
       let a = randomNumber(0,50);
-      let b = randomNumber(60,200);
+      let b = randomNumber(60,100);
     
       const {ingPreference} =this.state;
       const response = await axios.get(`https://api.edamam.com/search?q=${ingPreference}&app_id=${edaId}&app_key=${edaKey}&from=${a}&to=${b}`)
