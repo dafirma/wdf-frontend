@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../stylesheets/Cards.scss';
 import {Link} from 'react-router-dom';
 import Notifications, {notify} from 'react-notify-toast'
-
+import spinner from '../image/Rolling-1s-200px.gif'
 class Favorites extends Component {
   constructor(props){
     super(props);
@@ -31,7 +31,8 @@ class Favorites extends Component {
     this.server.get('/food/favorite')
    .then(result =>{
       this.setState({
-       favoriteId:result.data
+       favoriteId:result.data,
+       status:'isLoaded'
      })
    })
   }
@@ -53,10 +54,19 @@ class Favorites extends Component {
   }
 
   render(){
-    const {favoriteId} = this.state;
-    return(
-      <div className='container-favorite'>
-        <h2>FAVORITES</h2>
+    const {favoriteId, status } = this.state;
+    // eslint-disable-next-line default-case
+    switch(status){
+      case 'isLoading': 
+      return(
+        <div className='spinner'>
+          <img src={spinner} alt='git'/>
+        </div>
+      )
+      case 'isLoaded':
+        return(
+          <div className='container-favorite'>
+        <h2>Favorites</h2>
           {favoriteId !== undefined ?
             favoriteId.map((recipe,index) => 
             <div key={index} className='container-food'>
@@ -86,6 +96,7 @@ class Favorites extends Component {
       </div>
     )
   }
+}
 }
 export default withAuth(Favorites);
 

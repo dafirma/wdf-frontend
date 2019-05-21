@@ -1,7 +1,7 @@
 .container-signup{
   max-width: 100%;
   background-color: #fafafa;
-  padding-bottom: 15%;
+  padding-bottom: 6.5rem;
   h2{
     text-align: center;
     padding: 0% 0% 5% 0;
@@ -29,16 +29,16 @@
 
     display:flex;
     padding: 1rem 1rem 0.3rem 2.3rem;
-    margin-left: 4%;
+    margin-left: 0.3rem;
   
 }
 .ui-form-signup input {  
   font-size: 1.3rem;
   height: 3rem;
   border: none;
-  padding: 5% 11% 2% 5%;
+  padding: 0.6rem 0.9rem 0.6rem 0.9rem;
   border-bottom: lightgray solid 1px;
-  width: 77%; 
+  //width: 77%; 
   border-radius: 10px;
   //padding-bottom: 10%;
   text-align: center;
@@ -60,7 +60,7 @@
 }
 
  .container-btn-signup{
-   padding: 0.5rem 1rem 1rem 0.9rem;
+   padding: 0.5rem 1rem 1rem 1.4rem;
     /* padding:4% 0 0 5%;
     span{
       font-size: 25px;

@@ -1,9 +1,11 @@
 .container-storage{
  // padding:23% 6% 0 2%;
- padding:10% 0% 0% 0%;
+ padding:23px 0 0 0;
  h2{
    text-align: center;
    font-size: 25px;
+   font-weight: lighter;
+   padding-bottom: 5px;
  }
  hr.style-five {
   border: 0;
@@ -76,7 +78,6 @@ ul {
   margin-bottom: 10px;
 }
 .container-text-add-food {
-  //display: flex;
   width:81%;
   padding-right: 10%;
   input{
@@ -91,8 +92,9 @@ ul {
 }
 .form-addfood{
   display: flex;
+  padding-left: 3rem;
   input{
-    padding: 5% 11% 2% 5%;
+    padding: 10px 35px 8px 20px;
   border-bottom: lightgray solid 3px;
   width: 85%;
   border-radius: 10px;
@@ -102,6 +104,7 @@ ul {
   border: grey solid 3px;
   }
 }
+
 .container-btn-addfood{
   padding-left: 10%;
 }
@@ -114,17 +117,10 @@ ul {
 }
 .container-edit{
   display:block;
-  //padding-left:25%; 
-  ul{
-    //padding-left: 10%;
-  }
 }
 
 
-
-/////////////
 .add-food {
-  //margin-top:12%;
   max-width: 100%;
   padding: 1% 0 0% 0;
   label{
@@ -224,13 +220,9 @@ ul {
       break-before: always;
       margin: 0 0 3em 0;
   }
-  
-  #purchaseOrder {
-    margin: 0 0 2em 0;
-  }
 }
 .container-btn-plus-food{
-  padding:1rem 2rem 1rem 5.2rem;
+  padding:1rem 2rem 1rem 6.5rem;
   p{
     font-size: 1.2rem;
     text-align: center;
@@ -249,9 +241,7 @@ ul {
 .container-options-addfood{
   display: flex;
 }
-.form-addfood{
-  padding-left: 14%;
-}
+
 
 .food-list{
   padding-bottom: 20%;
@@ -262,9 +252,7 @@ ul {
   flex-direction: column;
   padding: 3% 0 1% 4%;
 }
-.food-list div{
- // flex:1;
-}
+
 .container-item{
   padding: 3% 0% 0% 6%;
   ul{

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-//import  { useState } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
-//import { FoodConsumer } from '../lib/FoodContext';
 import '../stylesheets/Navbar.scss'
 import home from '../image/casa_transp.png'
 import storage from '../image/dieta.png'
@@ -24,20 +22,7 @@ class Navbar extends Component {
       withCredentials: true
     });
   }
-      componentDidMount(){
-        this.getFav()
-        
-      }
-      getFav(){
-        this.server.get('/food/favorite')
-        .then(result =>{
-          this.setState({
-            favoriteId:result.data
-          })
-        })
-        this.getData()
-        this.favTest()
-      }
+     
 
   render() {
     const { logout, isLoggedin } = this.props;

@@ -31,9 +31,7 @@ class Auth {
     .then(response =>{
      // console.log(response)
       return response.data
-    } )
-      
-    
+    })
   }
 
   fav(){

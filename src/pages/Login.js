@@ -77,7 +77,7 @@ class Login extends Component {
           placeholder="Password"
         />
         </div>
-        <div >
+        <div className='container-btn-login'>
         <button className='btn-login' type="submit"><p>Login</p></button>
         </div>
         
