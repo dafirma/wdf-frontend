@@ -27,51 +27,30 @@ class Storage extends Component {
   addFood = theFood => {
     const foodsCopy = [...this.state.foods]
     foodsCopy.push(theFood)
-   // console.log(foodsCopy)
     this.setState({
         foods: foodsCopy
     })
   }
 
   deleteFood = (food) => {
-    //const foodsCopy = [...this.state.foods]
     const menuCopy = [...this.state.menu]
-    //console.log(food);
-    //console.log(menuCopy)
     let index = menuCopy.findIndex(elem => elem.title === food)
-    //console.log(index)
     menuCopy.splice(index,1)
     this.setState({
       menu:menuCopy
     })
+    this.server.post('/food/storage',{food})
   
-    
-    
-   /*  menuCopy.forEach(elem => {
-      if(elem.name === foodName){
-        let temp = parseInt(elem.quantity) - parseInt(foodQnt)
-        console.log('sub',temp)
-      }
-    }) */
-    /* this.server.post('/food/storage',{foodName})
-     foodsCopy.splice(foodIndex, 1)
-     menuCopy.splice(foodIndex, 1)
-    this.setState({
-        foods: foodsCopy,
-        menu: menuCopy
-    }) */
   }
     
 
   addMenu = tempFood =>{
-   // console.log(tempFood);
     let menuCopy = [...this.state.menu];
     let exists = false;
     let food = tempFood;
     menuCopy.forEach(elem =>{
       if(elem.title === food.title){
         let temp = parseInt(elem.quantity) + parseInt(food.quantity);
-       // console.log(temp)
         elem.quantity = temp
         food.quantity = temp;
         exists = true;
@@ -80,27 +59,21 @@ class Storage extends Component {
     if(!exists){
       menuCopy.push(food)
     }
-    this.setState()
-    //console.log(menuCopy)
-    //console.log('food', food)
     this.setState({
       menu:menuCopy
     })
    
-   this.server.put(`/food/storage/new`, {food})
+   this.server.put (`/food/storage/new`,{food})
     .then(response =>{
-    //console.log(response.data.storage)
-     })
-     .catch(error =>{
-   // console.log(error)
+    })
+    .catch(error =>{
     })
     this.setStorage() 
   }
 
-    setStorage(){
+  setStorage(){
     this.server.get('/food/storage')
     .then(result =>{
-     //console.log(result.data.storage)
        this.setState({
          menu:result.data.storage
        }) 
@@ -134,7 +107,7 @@ class Storage extends Component {
     })
     this.server.put(`/food/storage/new`, {food})
     .then(response =>{
-      //console.log(response.data.storage)
+      console.log(response.data.storage)
       /* this.setState({
         menu: response.data.storage
       }) */
