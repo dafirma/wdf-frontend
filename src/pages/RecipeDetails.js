@@ -2,7 +2,7 @@ import React from 'react';
 import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
 import '../stylesheets/RecipeDetails.scss'
-import favDetails from '../image/corazon _azul.png';
+import favDetails from '../image/corazon-de-boton-de-favorito.png';
 import back from '../image/flecha-hacia-la-izquierda.png'
 import Notifications, {notify} from 'react-notify-toast'
 
@@ -17,7 +17,7 @@ const RecipeDetails =(props) =>{
     <div className='container-details'>
       <div className='container-back-icon'>
       <Notifications/>
-      <Link to = {{pathname:`/private`}} ><span> <img src={back} alt='back'/>Back </span></Link>
+      <Link to = {{pathname:`/private`}} ><img src={back} alt='back'/></Link>
       </div>
       <h2>{recipe.recipe.label}</h2>
       <div className='container-image-details'>

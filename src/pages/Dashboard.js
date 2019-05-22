@@ -85,7 +85,7 @@ class Dashboard extends Component{
           </div>
           <div className='container-btn-view-and-fav'>
             <div className='container-btn'>
-             <Link to={{pathname:`/recipe/${recipe.recipe.uri}`, state:{recipe}}} >
+             <Link to={{pathname:`/recipe/${recipe.recipe.label}`, state:{recipe}}} >
               <button className='btn-view-recipe'><span>Recipe</span></button>
              </Link>
             </div>

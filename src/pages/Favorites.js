@@ -8,7 +8,6 @@ import spinner from '../image/Rolling-1s-200px.gif'
 class Favorites extends Component {
   constructor(props){
     super(props);
-    //console.log('props fav: ', props)
     this.getData = this.props.getData
     this.state ={
       recipes:[],
@@ -24,7 +23,6 @@ class Favorites extends Component {
    
  componentDidMount(){
    this.setFav();
-    
     
   } 
   setFav(){
@@ -81,7 +79,7 @@ class Favorites extends Component {
         <p><span>{recipe.yield}</span> Servings</p>
         <p><span>{parseInt(recipe.calories)} </span> Kcal</p>
           </div>
-        <p>Health Labels:</p>
+        <p className='health-label-fav'>Health Labels:</p>
         <div className='container-health-label'>
         {recipe.healthLabels.map((cardHealth, indexHealth)=>
           <p key={indexHealth}><span>{cardHealth}</span>/</p>)}

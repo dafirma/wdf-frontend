@@ -65,7 +65,7 @@ class RecipeList extends Component {
               <p><span>{recipe.recipe.yield}</span> Servings</p>
               <p><span>{parseInt(recipe.recipe.calories)} </span> Kcal</p>
             </div>
-            <p>Health Labels:</p>
+            <p className='health-labels-recipe-list'>Health Labels:</p>
             <div className='container-health-label'>
               {recipe.recipe.healthLabels.map((cardHealth, indexHealth)=>
               <p key={indexHealth}><span>{cardHealth}</span> /</p>)}

@@ -24,15 +24,13 @@
   width: 100%;
   padding:6% 0% 1% 0%; 
   font-size: 20px;
-  p{
-    text-align: center;
-    padding: 0 0.8rem 0.3rem 0.3rem;
-  }
+  
   
 }
 .recipe-title{
-  font-size: 22px;
+  font-size: 1.4rem;
   font-weight: 900;
+  text-align: center;
 }
 .container-health-label{
   display:flex;
@@ -52,7 +50,7 @@
 img{
   width: 100%;
   box-shadow: 0px 46px 94px 0  rgba(0, 0, 0, 0.1607843137254902);
-  margin-bottom:1rem;
+  margin-bottom:0.5rem;
   //0 0 88px 0
 }
 hr{
@@ -64,11 +62,17 @@ span {
 }
 .container-icon-card{
   display: flex;
-  padding: 1% 0% 0% 1%;
-  //width: 98%;
+  padding: 1rem 1.2rem 0.2rem 1rem;
   span {
-    font-size: 25px;
+    font-size: 22px;
   }
+  p{
+    font-size:17px;
+    text-align: center;
+  }
+}
+.health-label-fav{
+  text-align: center;
 }
 .container-icon-card-dasboard{
   display: flex;
@@ -77,6 +81,11 @@ span {
   //width: 98%;
   span {
     font-size: 25px;
+  }
+  p{
+    text-align: center;
+    padding: 0 0.8rem 0.5rem 0.3rem;
+    font-size: 1rem;
   }
 }
 
@@ -201,4 +210,8 @@ span {
     font-weight: lighter;
     padding: 5% 0% 0% 5%;
   }
+}
+
+.health-labels-recipe-list{
+  text-align: center;
 }

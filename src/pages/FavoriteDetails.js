@@ -12,7 +12,7 @@ const FavoriteDetails=(props) =>{
     <div className='container-details'>
       <div className='container-back-icon'>
       
-      <Link to = {{pathname:`/private`}} ><span> <img src={back} alt='back'/>Back </span></Link>
+      <Link to = {{pathname:`/private`}} ><img src={back} alt='back'/></Link>
       </div>
       <h2>{recipe.recipe.label}</h2>
       <div className='container-image-details'>

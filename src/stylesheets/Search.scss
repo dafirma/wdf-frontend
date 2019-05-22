@@ -9,7 +9,7 @@
   }
   h2 {
     text-align: center;
-    padding: 22px 0 4px 0;
+    padding: 12px 0 4px 0;
     font-size: 25px;
     font-weight: lighter;
   }
@@ -50,7 +50,6 @@
   padding: 2% 0% 1% 7%;
   padding-bottom: 8%;
   input{
-    width: 6.5rem;
     margin-right: 9%;
     border-bottom: lightgray solid 3px;
     border-radius: 10px;
@@ -60,7 +59,7 @@
     border: grey solid 3px;
     padding: 4% 2% 1% 0%;
     font-size: 1.1rem;
-    width: 80%;
+
   }
   label{
     padding-right: 2%;
@@ -110,7 +109,7 @@
   border:none;
   background-color: #c8cbce63;
   border-bottom: lightgray solid 3px;
-  width: 85%;
+  //width: 85%;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.160784);
@@ -135,7 +134,7 @@
   }
 }
 .container-btn-search{
-  padding:0% 0 0 32%;
+  padding:0% 0 0 7rem;
   p{
     font-size: 25px;
     text-align: center;

@@ -7,14 +7,7 @@
    font-weight: lighter;
    padding-bottom: 5px;
  }
- hr.style-five {
-  border: 0;
-  height: 0; /* Firefox... */
-  box-shadow: 0 0 10px 1px black;
-}
-hr.style-five:after {  /* Not really supposed to work, but does */
-  content: "\00a0";  /* Prevent margin collapse */
-}
+
 }
 .container-food-storage{
   padding:10 0%;
@@ -92,7 +85,7 @@ ul {
 }
 .form-addfood{
   display: flex;
-  padding-left: 3rem;
+  padding-left: 1.5rem;
   input{
     padding: 10px 35px 8px 20px;
   border-bottom: lightgray solid 3px;
@@ -258,8 +251,9 @@ ul {
   ul{
     padding-left: 10%;
   }
-  li{
-    width: 150%;
+   li{
+    //width: 100%;
+    padding-top: 0.8rem;
   }
   h3{
   padding-left:7rem;
