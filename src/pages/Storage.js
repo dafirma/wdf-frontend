@@ -66,10 +66,10 @@ class Storage extends Component {
    
    this.server.put (`/food/storage/new`,{food})
    .then(resp =>{
-     console.log(resp.data.storage)
+    // console.log(resp.data.storage)
    })
    .catch(err =>{
-     console.log(err)
+     //console.log(err)
    })
     //.then(response =>{
      // console.log()
@@ -83,13 +83,13 @@ class Storage extends Component {
   setStorage(){
     this.server.get('/food/storage')
     .then(result =>{
-      console.log('antes')
+      //console.log('antes')
       //console.log(result.data.storage)
           this.setState({
           menu:result.data.storage
         }) 
      })
-     console.log('depois')
+    // console.log('depois')
   } 
 
   deleteMenu = delFood =>{
