@@ -54,6 +54,7 @@ class Storage extends Component {
         elem.quantity = temp
         food.quantity = temp;
         exists = true;
+    
       }
     })
     if(!exists){
@@ -64,23 +65,31 @@ class Storage extends Component {
     }) 
    
    this.server.put (`/food/storage/new`,{food})
+   .then(resp =>{
+     console.log(resp.data.storage)
+   })
+   .catch(err =>{
+     console.log(err)
+   })
     //.then(response =>{
      // console.log()
    // })
     //.catch(error =>{
      // console.log(error)
     //})
-    this.setStorage() 
+    //this.setStorage() 
   } 
 
   setStorage(){
     this.server.get('/food/storage')
     .then(result =>{
+      console.log('antes')
       //console.log(result.data.storage)
           this.setState({
           menu:result.data.storage
         }) 
      })
+     console.log('depois')
   } 
 
   deleteMenu = delFood =>{
