@@ -65,10 +65,10 @@ class Storage extends Component {
    
    this.server.put (`/food/storage/new`,{food})
     .then(response =>{
-      console.log(response)
+    //  console.log(response)
     })
     .catch(error =>{
-      console.log(error)
+     // console.log(error)
     })
     this.setStorage() 
   } 
@@ -76,7 +76,7 @@ class Storage extends Component {
   setStorage(){
     this.server.get('/food/storage')
     .then(result =>{
-      console.log(result.data.storage)
+     // console.log(result.data.storage)
       this.setState({
       menu:result.data.storage
       }) 
@@ -110,7 +110,7 @@ class Storage extends Component {
     })
     this.server.put(`/food/storage/new`, {food})
     .then(response =>{
-      console.log(response.data.storage)
+      //console.log(response.data.storage)
       /* this.setState({
         menu: response.data.storage
       }) */
@@ -128,8 +128,8 @@ class Storage extends Component {
 
   render(){
     let foodList = [...this.state.foods];
-    let newMenu = [...this.state.menu]
-    console.log(newMenu)
+    //let newMenu = [...this.state.menu]
+    //console.log(newMenu)
     return(
       <div className='container-storage'>
         <h2>Storage</h2>
