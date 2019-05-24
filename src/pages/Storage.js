@@ -64,12 +64,12 @@ class Storage extends Component {
     }) 
    
    this.server.put (`/food/storage/new`,{food})
-    .then(response =>{
-      //console.log(response)
-    })
-    .catch(error =>{
+    //.then(response =>{
+     // console.log()
+   // })
+    //.catch(error =>{
      // console.log(error)
-    })
+    //})
     this.setStorage() 
   } 
 
@@ -109,15 +109,15 @@ class Storage extends Component {
       menu:menuCopy
     })
     this.server.put(`/food/storage/new`, {food})
-    .then(response =>{
+    //.then(response =>{
      // console.log(response.data.storage)
       /* this.setState({
         menu: response.data.storage
       }) */
-    })
-    .catch(error =>{
+    //})
+   // .catch(error =>{
       //console.log(error)
-    })
+   // })
 
    // const menu = menuCopy;
     //console.log(food.quantity)
