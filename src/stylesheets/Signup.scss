@@ -7,6 +7,15 @@
     padding: 0% 0% 5% 0;
   }
 }
+.container-logo-signup{
+  margin: 0 auto;
+  display: table;
+}
+.logo-signup{
+  display: table-cell;
+  vertical-align: middle;
+
+}
 
 
 .form-signup{
@@ -45,12 +54,11 @@
 }
 
 .container-input-signup{
+  margin: 0 auto;
   padding-bottom: 3%;
 
 }
-.container-logo-signup{
-  padding: 1rem 2rem 1rem 6rem;
-}
+
 .text-signup{
   text-align: center;
   a{

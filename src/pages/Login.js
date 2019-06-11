@@ -42,9 +42,9 @@ class Login extends Component {
     const {formErrors} = this.state;
 
     return (
-      <div className='container-signup'>
-      <div className='container-logo-signup'>
-          <img src = {logo} alt='logo-wdf'/>
+      <div className='container-login'>
+      <div className='container-logo-login'>
+          <img className='logo-login'src = {logo} alt='logo-wdf'/>
       </div> 
       {formErrors && 
       <div><h2>Error, fields empty!</h2></div> }

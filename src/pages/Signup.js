@@ -14,7 +14,7 @@ class Signup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const { username, password, preference } = this.state;
-    if(username ==='' || password ==='' || preference=== ''){
+    if(username.length < 2 || password < 2 || preference < 2){
       this.setState({
         formErrors: true
       })
@@ -23,6 +23,7 @@ class Signup extends Component {
     
   }
 }
+
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -35,10 +36,10 @@ class Signup extends Component {
     return (
       <div className='container-signup'>
         <div className='container-logo-signup'>
-            <img src = {logo} alt='logo-wdf'/>
+            <img className='logo-signup' src = {logo} alt='logo-wdf'/>
         </div> 
         {formErrors && 
-        <div><h2>Error, fields empty!</h2></div> }
+        <div><h2>Error, fields too short!</h2></div> }
         <form className='ui-form-signup' onSubmit={this.handleFormSubmit}>
           <div className='container-input-signup'>
             <div className='container-child-searchbar'>

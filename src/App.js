@@ -39,14 +39,14 @@ class App extends Component {
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/Login" component={Login} />
-            <PrivateRoute path exact ='/'component={Private}/>
             <PrivateRoute path  ='/logout'component={Login}/>
-            <PrivateRoute path="/private" component={Private} sendToApp={this.getDataForPrivateFavorites} />
+            {/* <PrivateRoute path="/private" component={Private} sendToApp={this.getDataForPrivateFavorites} /> */}
             <PrivateRoute path ='/storage' component={Storage}/>
             <PrivateRoute path  ='/search' component={SearchPage}/>
             <PrivateRoute path  ='/favorites' component={Favorites} manu={{manu: 'manu'}} favoriteId={this.state.favoriteId} getData={()=>this.getDataForPrivateFavorites} />
             <PrivateRoute path ='/fav' component={FavoriteDetails}/>
             <PrivateRoute path ='/recipe/:id' component={RecipeDetails}/>
+            <PrivateRoute path  ='/'component={Private}/>
             <PrivateRoute component={Page404} />
           </Switch> 
         </div>

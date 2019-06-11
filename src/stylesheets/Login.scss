@@ -6,6 +6,16 @@
   overflow: hidden;
   margin-bottom: -70%;
 }
+
+.container-logo-login{
+  margin: 0 auto;
+  display: table;
+} 
+
+.logo-login{
+  display: table-cell;
+  vertical-align: middle;
+}
 .form-login{
   //margin:35% auto;
   width: 90%;
@@ -16,6 +26,7 @@
   margin-left:26px;
   padding-top:1rem;
 }
+
 input {  
   font-size: 1.3rem;
   height: 2rem;
@@ -57,11 +68,10 @@ input {
 
 }
 
-.container-logo{
-  padding: 1rem 2rem 1rem 6rem;
-}
+
 .container-input-login{
   padding-bottom: 5%;
+  margin: 0 auto;
 }
 li{
   a:visited{
@@ -132,9 +142,9 @@ li{
   padding-bottom: 3%;
 
 }
-.container-logo-signup{
+/* .container-logo-signup{
   padding: 1rem 2rem 1rem 6rem;
-}
+} */
 .text-signup{
   text-align: center;
   a{

@@ -33,7 +33,7 @@ class Navbar extends Component {
       <div className='navigation'>
           <>
             <ul>
-              <li><Link to='/private'><img src={home} alt='home' width='50%'/></Link></li>
+              <li><Link to='/'><img src={home} alt='home' width='50%'/></Link></li>
               <li><Link to='/storage'><img src={storage} alt='storage' width='50%'/></Link></li>
               <li><Link to='/search'><img src={search} alt='search' width='50%'/></Link></li>
               <li><Link to='/favorites'><img src={favorite} alt='favorite' width='50%'/></Link></li>
